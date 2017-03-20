@@ -19,12 +19,16 @@ echo "This script will overwrite any files for you home folder in the same struc
 
 if confirm "Please make sure you're running the script from the root of the git repo.  Continue? [y/N] "?
 then
-	echo "Continuing..."
+	echo "Continuing...\n"
 	# Save to do anything dangerous
+	echo "Creating symbolic links to configuration files..."
 	cp -rfs "$(pwd)/user-home/." ~/
 else
 	echo "Stopping!"
 	exit 0
 fi
 
-echo "Thanks for using my script!"
+echo "Merging xrdb entries..."
+xrdb -merge ~/.Xdefaults
+
+echo "Thanks for using my script! Remember: Deleting this directory will invalidate all the symlinks! Be careful."
