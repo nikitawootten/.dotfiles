@@ -7,4 +7,5 @@
 
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
-export TERM='linux'
+export TERM='rxvt-unicode'
+export EDITOR='vim'

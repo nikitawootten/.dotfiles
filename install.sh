@@ -15,11 +15,15 @@ confirm() {
 
 echo "Nikita's dotfiles!\n"
 
-if confirm "This script will overwrite any files your home folder in the same structure as user-home/! Continue? [y/N] "?
+echo "This script will overwrite any files for you home folder in the same structure as user-home/!"
+
+if confirm "Please make sure you're running the script from the root of the git repo.  Continue? [y/N] "?
 then
-	echo "Continuing"
+	echo "Continuing..."
+	# Save to do anything dangerous
+	cp -rfs "$(pwd)/user-home/." ~/
 else
-	echo "Stopping"
+	echo "Stopping!"
 	exit 0
 fi
 
