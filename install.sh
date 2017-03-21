@@ -15,7 +15,14 @@ confirm() {
 
 echo "Nikita's dotfiles!\n"
 
-echo "This script will overwrite any files for you home folder in the same structure as user-home/!"
+echo "I run Arch Linux on my machine. You can find a list of required packages in the readme, but this script can install all of them for you."
+
+if confirm "Would you like this script to do so? [y/N] "?
+then
+	sudo pacman -Sy i3-wm i3lock i3status dunst compton feh vim rxvt-unicode scrot ttf-symbola ttf-dejavu arc-gtk-theme arc-icon-theme elementary-icon-theme
+fi
+
+echo "\nThis script will overwrite any files for you home folder in the same structure as user-home/!"
 
 if confirm "Please make sure you're running the script from the root of the git repo.  Continue? [y/N] "?
 then
