@@ -1,0 +1,4 @@
+configuration {
+	font: "Cozette 20";
+	theme: "~/.config/rofi/sidebar.rasi";
+}

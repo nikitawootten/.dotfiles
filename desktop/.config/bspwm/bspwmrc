@@ -2,8 +2,9 @@
 
 setxkbmap -option grp:win_space_toggle us,ru &
 pgrep -x sxhkd > /dev/null || sxhkd &
+greenclip daemon &
 xsetroot -cursor_name left_ptr &
-picom &
+picom --backend glx &
 feh --bg-fill ~/Pictures/walls/Paul\ Chadeisson/YbK0r0b.jpg &
 ~/.config/polybar/launch.sh
 
