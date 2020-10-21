@@ -137,11 +137,11 @@ super + {Left,Down,Up,Right}
 
 # screenshots
 Print
-	scrot ~/Pictures
+	maim ~/Pictures/screenshots/$(date +%Y-%m-%d-%T)-screenshot.png
 
 # screenshot area/active window
-super + Print
-	scrot -s ~/Pictures
+shift + Print
+	maim -s ~/Pictures/screenshots/$(date +%Y-%m-%d-%T)-screenshot-area.png
 
 # raise/lower/mute volume
 {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}

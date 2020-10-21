@@ -75,7 +75,7 @@ modules-center = spotify
 [bar/tray]
 inherit = bar/base
 width = 9%
-
+tray-background = ${colors.transparent}
 offset-x = 90.5%
 
 modules-left = pulseaudio battery time 
@@ -92,8 +92,8 @@ modules-center = previous playpause next spotify
 modules-right = xkeyboard pulseaudio battery time
 
 tray-position = right
-tray-padding = 5
-tray-background = ${colors.background}
+tray-padding = 0
+tray-background = ${colors.transparent}
 
 ;                      _       _           
 ;  _ __ ___   ___   __| |_   _| | ___  ___ 
@@ -219,7 +219,8 @@ click-left = "playerctl next"
 
 [module/playpause]
 type = custom/script
-exec = spotifystatus
+exec = echo "⏯ "
+#exec = spotifystatus
 exec-if = "pgrep spotify"
 format-padding = 1
 tail = true
