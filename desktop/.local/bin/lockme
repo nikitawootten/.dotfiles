@@ -9,7 +9,7 @@ case "$1" in
     start)
         # configure timeouts
         xset s 600 60
-        xss-lock -n "$me dim" -- "$me" lock
+        xss-lock -n "$me dim" -- "$me lock"
         ;;
     dim)
         # dim screen
@@ -19,7 +19,6 @@ case "$1" in
         # lock screen (TODO manage compositor)
         playerctl -a pause
         XSECURELOCK_PASSWORD_PROMPT=time_hex \
-            XSECURELOCK_SHOW_USERNAME=0 \
             XSECURELOCK_SHOW_DATETIME=1 \
             XSECURELOCK_DISCARD_FIRST_KEYPRESS=0 \
             XSECURELOCK_SAVER=saver_mpv \

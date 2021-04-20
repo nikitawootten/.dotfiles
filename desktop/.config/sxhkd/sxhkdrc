@@ -14,12 +14,12 @@ super + {_,shift + } d
 	rofi -show {run,window}
 
 # clipboard
-super + p
-	rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'
+#super + p
+#	rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'
 
 ## lockscreen activation
-#super + l
-#	xset s activate
+super + Delete
+	xset s activate
 
 # make sxhkd reload its configuration files:
 super + Escape

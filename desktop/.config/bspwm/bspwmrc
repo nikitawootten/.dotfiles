@@ -2,10 +2,9 @@
 
 setxkbmap -option grp:win_space_toggle us,ru &
 pgrep -x sxhkd > /dev/null || sxhkd &
-greenclip daemon &
 xsetroot -cursor_name left_ptr &
 picom --backend glx &
-feh --bg-fill ~/Pictures/walls/Paul\ Chadeisson/YbK0r0b.jpg &
+feh --bg-fill ~/Pictures/walls/win7.jpg &
 ~/.config/polybar/launch.sh
 
 bspc monitor -d I II III IV V VI VII VIII IX X

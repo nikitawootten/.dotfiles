@@ -31,7 +31,7 @@ highlight = ${xrdb:color15:#ebdbb2}
 [bar/base]
 enable-ipc = true
 font-0=Cozette:pixelsize=15;2
-font-1=FontAwesome5Free:style=Solid:pixelsize=17:antialias=true;2
+font-1=FontAwesome:style=Solid:pixelsize=17:antialias=true;2
 
 padding = 2
 border-size = 0
@@ -91,7 +91,7 @@ modules-left = bspwm xwindow
 modules-center = previous playpause next spotify
 modules-right = xkeyboard pulseaudio battery time
 
-tray-position = right
+tray-position = center
 tray-padding = 0
 tray-background = ${colors.transparent}
 
@@ -129,10 +129,11 @@ label-focused-foreground = ${colors.highlight}
 label-focused-padding = 1
 
 label-occupied = %name%
-label-occupied-foreground = ${colors.highlight}
+label-occupied-foreground = ${colors.foreground}
 label-occupied-padding = 1
 
 label-empty = %name%
+label-empty-foreground = ${colors.background}
 label-empty-padding = 1
 
 [module/mpd]
