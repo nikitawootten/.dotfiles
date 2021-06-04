@@ -2,12 +2,17 @@
 # wm independent hotkeys
 #
 
-# terminal emulator
+# just a terminal
 super + Return
 	alacritty
 
+# floating terminal
 super + shift + Return
 	alacritty -t floatme
+
+# terminal in the same working directory
+super + ctrl + Return
+	alacritty --working-directory $(xcwd)
 
 # program launcher
 super + {_,shift + } d
@@ -48,6 +53,10 @@ super + y
 # swap the current node and the biggest window
 super + g
 	bspc node -s biggest.window
+
+# rotate tree
+super + {comma, period}
+	bspc node @/ -C {forward,backward}
 
 #
 # state/flags
@@ -135,7 +144,7 @@ super + {Left,Down,Up,Right}
 # media
 #
 
-# screenshots
+# screenshot
 Print
 	maim ~/Pictures/screenshots/$(date +%Y-%m-%d-%T)-screenshot.png
 
@@ -150,3 +159,12 @@ shift + Print
 # raise/lower backlight
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
 	xbacklight {-inc,-dec} 5
+
+#
+# misc
+#
+
+# display all shortcuts
+super + slash
+	sxhkd_helper
+

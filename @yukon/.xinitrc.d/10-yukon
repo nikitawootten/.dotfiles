@@ -7,5 +7,7 @@ xinput --set-prop pointer:"HAILUCK CO.,LTD USB KEYBOARD Mouse" "libinput Scroll 
 
 [[ -f ~/.config/yukon/Xresources ]] && xrdb -merge ~/.config/yukon/Xresources
 
+setxkbmap -option grp:win_space_toggle us,ru
+
 [[ -f ~/.config/yukon/Xmodmap ]] && xmodmap ~/.config/yukon/Xmodmap
 

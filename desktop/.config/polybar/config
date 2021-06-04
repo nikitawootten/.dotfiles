@@ -17,10 +17,12 @@
 ;==========================================================
 
 [colors]
-transparent = #00ffffff
-background = ${xrdb:color0:#282828}
+background = ${xrdb:color0:#aa282828}
 foreground = ${xrdb:color7:#a89984}
 highlight = ${xrdb:color15:#ebdbb2}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
 
 ;  _                    
 ; | |__   __ _ _ __ ___ 
@@ -33,67 +35,36 @@ enable-ipc = true
 font-0=Cozette:pixelsize=15;2
 font-1=FontAwesome:style=Solid:pixelsize=17:antialias=true;2
 
-padding = 2
+padding = 1
 border-size = 0
 border-color = ${colors.foreground}
 
 height = 35
-;radius = 20
-;Works very well with a radius like this! Put it on every bar.
+radius = 0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
+
 override-redirect=false
 offset-y = 10
 
 wm-restack = bspwm
-
-[bar/ws]
-inherit = bar/base
-width = 14.5%
-
-offset-x = 10
-line-size = 1
-
-modules-left = bspwm xwindow
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-[bar/music]
-inherit = bar/base
-enable-ipc = true
-width = 25%
-
-offset-x = 37.5%
-
-; Spotify (uses playerctl)
-modules-left = previous playpause next 
-modules-center = spotify
-; Mpd
-;modules-center = mpd
-
-[bar/tray]
-inherit = bar/base
-width = 9%
-tray-background = ${colors.transparent}
-offset-x = 90.5%
-
-modules-left = pulseaudio battery time 
 
 [bar/main]
 inherit = bar/base
 offset-x = 0.5%
 width = 99%
 
-background = ${colors.transparent}
+background = ${colors.background}
+module-margin = 1
 
 modules-left = bspwm xwindow
 modules-center = previous playpause next spotify
-modules-right = xkeyboard pulseaudio battery time
+modules-right = network xkeyboard pulseaudio battery time
 
 tray-position = center
 tray-padding = 0
-tray-background = ${colors.transparent}
+tray-background = ${colors.background}
 
 ;                      _       _           
 ;  _ __ ___   ___   __| |_   _| | ___  ___ 
@@ -111,13 +82,16 @@ format = "<label>"
 scroll-up = bspc desktop -f next
 scroll-down = bspc desktop -f prev
 
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:33:...%
 label-margin = 2
 
+
 [module/xkeyboard]
 type = internal/xkeyboard
+
 
 [module/bspwm]
 type = internal/bspwm
@@ -125,7 +99,7 @@ reverse-scroll = false
 
 label-focused = %name%
 label-focused-underline = ${colors.highlight}
-label-focused-foreground = ${colors.highlight}
+label-focused-foreground = ${colors.alert}
 label-focused-padding = 1
 
 label-occupied = %name%
@@ -133,28 +107,9 @@ label-occupied-foreground = ${colors.foreground}
 label-occupied-padding = 1
 
 label-empty = %name%
-label-empty-foreground = ${colors.background}
+label-empty-foreground = ${colors.primary}
 label-empty-padding = 1
 
-[module/mpd]
-type = internal/mpd
-host = 127.0.0.1
-port = 6600
-format-online = <icon-prev> <toggle> <icon-next>   <label-song>  <label-time>
-format-online-margin = 2
-
-format-offline = <label-offline>
-label-offline =   offline
-format-offline-padding = 2
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 50
-label-song-ellipsis = true
 
 [module/battery]
 type = internal/battery
@@ -174,8 +129,30 @@ ramp-capacity-4 = 
 ; Framerate in milliseconds
 animation-charging-framerate = 750
 
+
 [module/network]
 type = internal/network
+interface = wlan0
+
+format-connected = <ramp-signal> <label-connected>
+format-disconnected = <label-disconnected>
+format-packetloss = <animation-packetloss> <label-connected>
+
+label-connected = %essid%
+label-disconnected =  not connected
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-5 = 
+
+animation-packetloss-0 = 
+animation-packetloss-1 = 
+; Framerate in milliseconds
+animation-packetloss-framerate = 500
+
 
 [module/time]
 type = internal/date
@@ -186,6 +163,7 @@ time = "%H:%M"
 date = "%d %b"
 
 label = %date%, %time%
+
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -200,50 +178,13 @@ ramp-volume-0 = ""
 ramp-volume-1 = ""
 ramp-volume-2 = ""
 
-
 label-muted = "  muted"   
 label-muted-padding = 0
 
-;Spotify modules
-
-[module/previous]
-type = custom/script
-exec = echo " "
-exec-if = "pgrep spotify"
-click-left = "playerctl previous"
-
-[module/next]
-type = custom/script
-exec = echo "  "
-exec-if = "pgrep spotify"
-click-left = "playerctl next"
-
-[module/playpause]
-type = custom/script
-exec = echo "⏯ "
-#exec = spotifystatus
-exec-if = "pgrep spotify"
-format-padding = 1
-tail = true
-interval = 0
-click-left = "playerctl -p spotify play-pause"
-
-
-[module/spotify]
-type = custom/script
-exec = playerctl -p spotify metadata --format '{{artist}} - {{title}}'
-exec-if = "pgrep spotify"
-format-padding = 1
-tail = true
-interval = 1
 
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = true
+
 
 [global/wm]
 margin-top = 0

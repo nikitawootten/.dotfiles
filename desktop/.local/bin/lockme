@@ -5,11 +5,13 @@ me="$(readlink -f "$0")"
 
 list_vids="find ~/Videos/locks -type f"
 
+echo $me
+
 case "$1" in
     start)
         # configure timeouts
         xset s 600 60
-        xss-lock -n "$me dim" -- "$me lock"
+        xss-lock -n "$me dim" -- $me lock
         ;;
     dim)
         # dim screen
@@ -17,12 +19,14 @@ case "$1" in
         ;;
     lock)
         # lock screen (TODO manage compositor)
-        playerctl -a pause
-        XSECURELOCK_PASSWORD_PROMPT=time_hex \
-            XSECURELOCK_SHOW_DATETIME=1 \
-            XSECURELOCK_DISCARD_FIRST_KEYPRESS=0 \
-            XSECURELOCK_SAVER=saver_mpv \
-            XSECURELOCK_LIST_VIDEOS_COMMAND="$list_vids" \
-            xsecurelock
+        #playerctl -a pause
+        #XSECURELOCK_PASSWORD_PROMPT=time_hex \
+        #    XSECURELOCK_SHOW_DATETIME=1 \
+        #    XSECURELOCK_DISCARD_FIRST_KEYPRESS=0 \
+        #    XSECURELOCK_SAVER=saver_mpv \
+        #    XSECURELOCK_LIST_VIDEOS_COMMAND="$list_vids" \
+	#    XSECURELOCK_NO_COMPOSITE=1 \
+        #    xsecurelock
+	i3lock
         ;;
 esac

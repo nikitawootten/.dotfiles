@@ -2,6 +2,8 @@
 # ~/.xinitrc
 # Executed when 'startx' is run
 
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+
 # local xinitr.d
 if [ -d ~/.xinitrc.d ]; then
 	for f in ~/.xinitrc.d/*; do
@@ -9,8 +11,5 @@ if [ -d ~/.xinitrc.d ]; then
 	done
 	unset f
 fi
-
-# load .Xresources
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 exec bspwm
