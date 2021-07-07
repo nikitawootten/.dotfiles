@@ -1,0 +1,41 @@
+- name: Install packages specific to GPD Pocket 2
+  ansible.builtin.package:
+    name:
+      # thermal / battery management
+      - thermald
+      - tlp
+      # touchscreen controls
+      - touchegg
+    state: present
+    update_cache: yes
+  become: yes
+- name: Start services
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  with_items:
+    - thermald
+    - tlp
+  become: true
+- name: Create configuration file directories
+  file:
+    path: ~/{{ item }}
+    state: directory
+  with_items:
+    - ".config/touchegg"
+- name: Symlink relevant configuration files
+  file:
+    src: "{{ role_path }}/files/user/{{ item }}"
+    path: ~/{{ item }}
+    state: link
+  with_items:
+    - ".config/touchegg/touchegg.conf"
+    - ".config/gpdp2_Xmodmap"
+    - ".config/gpdp2_Xresources"
+    - ".pam_environment"
+- name: Copy system configuration
+  copy:
+    src: system/etc/X11/xorg.conf.d/*
+    dest: /etc/X11/xorg.conf.d/
+  become: true

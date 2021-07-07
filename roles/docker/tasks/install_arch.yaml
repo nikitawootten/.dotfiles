@@ -1,0 +1,8 @@
+- name: Install Docker (Docker)
+  ansible.builtin.package:
+    name:
+      - docker
+      - docker-compose
+    state: present
+    update_cache: yes
+  become: yes

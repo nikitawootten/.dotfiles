@@ -15,6 +15,7 @@
       - noto-fonts-emoji
       # misc
       - alacritty
+      - picom
     state: present
     update_cache: yes
   become: yes
@@ -24,6 +25,7 @@
     state: directory
   with_items:
     - ".config/xinitrc.d"
+    - ".config/picom"
 - name: Symlink relevant configuration files
   file:
     src: "{{ role_path }}/files/user/{{ item }}"
@@ -32,6 +34,7 @@
   with_items:
     - ".xinitrc"
     - ".config/xinitrc.d/30-gnome-keyring"
+    - ".config/picom/picom.conf"
 - name: Copy PAM configuration for Gnome Keyring
   copy:
     src: system/etc/pam.d/login

@@ -1,7 +1,8 @@
 ---
-- name: Set up melchior-magi
+- name: Set up yukon
   hosts: localhost
   roles:
   - zsh
   - docker
-  - i3
+  - gpd_pocket_2
+  - bspwm

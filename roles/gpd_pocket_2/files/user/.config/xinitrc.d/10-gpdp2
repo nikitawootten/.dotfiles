@@ -5,9 +5,8 @@ xinput --set-prop pointer:"HAILUCK CO.,LTD USB KEYBOARD Mouse" "libinput Middle 
 xinput --set-prop pointer:"HAILUCK CO.,LTD USB KEYBOARD Mouse" "libinput Button Scrolling Button" 3
 xinput --set-prop pointer:"HAILUCK CO.,LTD USB KEYBOARD Mouse" "libinput Scroll Method Enabled" 0 0 1
 
-[[ -f ~/.config/yukon/Xresources ]] && xrdb -merge ~/.config/yukon/Xresources
+[[ -f ~/.config/gpdp2_Xresources ]] && xrdb -merge ~/.config/gpdp2_Xresources
 
 setxkbmap -option grp:win_space_toggle us,ru
 
-[[ -f ~/.config/yukon/Xmodmap ]] && xmodmap ~/.config/yukon/Xmodmap
-
+[[ -f ~/.config/gpdp2_Xmodmap ]] && xmodmap ~/.config/gpdp2_Xmodmap

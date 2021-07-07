@@ -1,0 +1,26 @@
+- name: Install BSPWM and its dependencies
+  ansible.builtin.package:
+    name:
+      - bspwm
+      - sxhkd
+    state: present
+    update_cache: yes
+- name: Create configration file directories
+  file:
+    path: ~/{{ item }}
+    state: directory
+  with_items:
+    - ".config/bspwm"
+    - ".config/sxhkd"
+    - ".config/polybar"
+- name: Symlink relevant configuration files
+  file:
+    src: "{{ role_path }}/files/{{ item }}"
+    path: "~/{{ item }}"
+    state: link
+  with_items:
+    - ".config/bspwm/bspwmrc"
+    - ".config/bspwm/external_rules"
+    - ".config/sxhkd/sxhkdrc"
+    - ".config/polybar/config"
+    - ".config/polybar/launch.sh"

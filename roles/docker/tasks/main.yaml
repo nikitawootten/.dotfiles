@@ -1,0 +1,18 @@
+- import_tasks: install_arch.yaml
+  when: ansible_distribution == "Arch Linux"
+- import_tasks: install_debian.yaml
+  when: ansible_distribution == "Debian" or
+        ansible_distribution == "Ubuntu"
+- name: Start Docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+  become: yes
+- name: Add user '{{ lookup('env', 'USER') }}' to Docker group
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    groups:
+      - docker
+    append: yes
+  become: yes

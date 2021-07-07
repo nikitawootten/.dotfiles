@@ -1,0 +1,33 @@
+- name: Install Docker package dependencies (Ubuntu/Debian)
+  apt:
+    name: "{{item}}"
+    state: present
+    update_cache: yes
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg
+    - lsb-release
+  become: yes
+- name: Add Docker GPG key (Ubuntu/Debian)
+  apt_key:
+    url: https://download.docker.com/linux/{{(ansible_distribution == 'Ubuntu') | ternary('ubuntu', 'debian')}}/gpg
+    state: present
+  become: yes
+- name: Add Docker repository (Ubuntu/Debian)
+  apt_repository:
+    repo: deb https://download.docker.com/linux/{{(ansible_distribution == 'Ubuntu') | ternary('ubuntu', 'debian')}} {{ansible_distribution_release}} stable
+    state: present
+  become: yes
+- name: Install Docker (Ubuntu/Debian)
+  apt:
+    name: "{{item}}"
+    state: latest
+    update_cache: yes
+  loop:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-compose
+  become: yes
