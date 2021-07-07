@@ -1,0 +1,39 @@
+- name: Install base x tools
+  ansible.builtin.package:
+    name:
+      - xorg-xinit
+      - xorg-xinput
+      - xorg-setxkbmap
+      - xclip
+      # secrets and ssh agent management
+      - gnome-keyring
+      # fonts
+      - ttf-jetbrains-mono
+      - noto-fonts
+      - noto-fonts-extra
+      - noto-fonts-cjk
+      - noto-fonts-emoji
+      # misc
+      - alacritty
+    state: present
+    update_cache: yes
+  become: yes
+- name: Create configuration file directories
+  file:
+    path: ~/{{ item }}
+    state: directory
+  with_items:
+    - ".config/xinitrc.d"
+- name: Symlink relevant configuration files
+  file:
+    src: "{{ role_path }}/files/user/{{ item }}"
+    path: ~/{{ item }}
+    state: link
+  with_items:
+    - ".xinitrc"
+    - ".config/xinitrc.d/30-gnome-keyring"
+- name: Copy PAM configuration for Gnome Keyring
+  copy:
+    src: system/etc/pam.d/login
+    dest: /etc/pam.d/login
+  become: yes

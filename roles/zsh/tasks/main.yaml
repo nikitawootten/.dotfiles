@@ -1,0 +1,12 @@
+- name: Install zsh
+  package:
+    name: zsh
+    state: present
+    update_cache: yes
+  become: yes
+# - name: Change shell to zsh
+#   command: chsh -s /bin/zsh {{ lookup('env' 'USER') }}
+#   become: yes
+#   register: zsh_for_user
+#   failed_when: zsh_for_user.rc >= 1
+#   changed_when: zsh_for_user.rc == 0

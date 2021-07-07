@@ -1,0 +1,6 @@
+---
+- name: Set up melchior-magi
+  hosts: localhost
+  roles:
+  - zsh
+  - i3

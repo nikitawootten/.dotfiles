@@ -1,0 +1,23 @@
+- name: Install i3 and its dependencies
+  ansible.builtin.package:
+    name:
+      - i3-gaps
+      - i3blocks
+      - i3status
+    state: present
+    update_cache: yes
+  become: yes
+- name: Create configuration file directories
+  file:
+    path: ~/{{ item }}
+    state: directory
+  with_items:
+    - ".config/i3"
+- name: Symlink relevant configuration files
+  file:
+    src: "{{ role_path }}/files/{{ item }}"
+    path: ~/{{ item }}
+    state: link
+  with_items:
+    - ".config/i3/config"
+    - ".config/xinitrc.d/99-i3"
