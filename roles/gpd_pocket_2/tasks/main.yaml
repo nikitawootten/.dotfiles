@@ -37,6 +37,10 @@
     - ".config/xinitrc.d/10-gpdp2"
 - name: Copy system configuration
   copy:
-    src: system/etc/X11/xorg.conf.d/*
+    src: system/etc/X11/xorg.conf.d/{{ item }}
     dest: /etc/X11/xorg.conf.d/
+  with_items:
+    - "20-intel.conf"
+    - "30-monitor.conf"
+    - "99-touchscreen.conf"
   become: true
