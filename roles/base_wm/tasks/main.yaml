@@ -17,8 +17,6 @@
       - picom
       - python-pywal
       - feh
-      # misc
-      - alacritty
     state: present
     update_cache: yes
   become: yes

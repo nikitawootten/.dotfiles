@@ -11,9 +11,11 @@
     path: ~/{{ item }}
     state: directory
   with_items:
+    - ".config/xinitrc.d"
     - ".config/bspwm"
     - ".config/sxhkd"
     - ".config/polybar"
+    - ".local/bin"
 - name: Symlink relevant configuration files
   file:
     src: "{{ role_path }}/files/{{ item }}"
@@ -26,3 +28,4 @@
     - ".config/polybar/config"
     - ".config/polybar/launch.sh"
     - ".config/xinitrc.d/99-bspwm"
+    - ".local/bin/sxhkd_helper"
