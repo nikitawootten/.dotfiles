@@ -13,9 +13,12 @@
       - noto-fonts-extra
       - noto-fonts-cjk
       - noto-fonts-emoji
+      # eye candy
+      - picom
+      - python-pywal
+      - feh
       # misc
       - alacritty
-      - picom
     state: present
     update_cache: yes
   become: yes

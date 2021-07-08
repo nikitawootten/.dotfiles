@@ -5,6 +5,7 @@
       - sxhkd
     state: present
     update_cache: yes
+  become: true
 - name: Create configration file directories
   file:
     path: ~/{{ item }}
@@ -24,3 +25,4 @@
     - ".config/sxhkd/sxhkdrc"
     - ".config/polybar/config"
     - ".config/polybar/launch.sh"
+    - ".config/xinitrc.d/99-bspwm"

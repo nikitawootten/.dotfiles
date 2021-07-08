@@ -34,6 +34,7 @@
     - ".config/gpdp2_Xmodmap"
     - ".config/gpdp2_Xresources"
     - ".pam_environment"
+    - ".config/xinitrc.d/10-gpdp2"
 - name: Copy system configuration
   copy:
     src: system/etc/X11/xorg.conf.d/*
