@@ -6,7 +6,7 @@
   become: yes
 - name: Ensure ~/.local/bin exists
   file:
-    path: .local/bin
+    path: ~/.local/bin
     state: directory
 # did I mention I hate xdg-open?
 - name: Symlink Alacritty to ~/.local/bin/xterm

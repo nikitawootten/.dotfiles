@@ -4,9 +4,21 @@
     state: present
     update_cache: yes
   become: yes
-# - name: Change shell to zsh
-#   command: chsh -s /bin/zsh {{ lookup('env' 'USER') }}
-#   become: yes
-#   register: zsh_for_user
-#   failed_when: zsh_for_user.rc >= 1
-#   changed_when: zsh_for_user.rc == 0
+- name: Create required directories for zsh
+  file:
+    path: ~/{{ item }}
+    state: directory
+  with_items:
+    - ".config/zshrc.d"
+    # local executables live here
+    - ".local/bin"
+- name: Symlink zsh dotfiles
+  include_role:
+    name: dotfiles
+- name: change user shell to zsh 
+  vars:
+    the_user: "{{ ansible_user_id }}"
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /bin/zsh
+  become: yes
