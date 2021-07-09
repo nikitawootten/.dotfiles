@@ -1,0 +1,34 @@
+- name: Install packages specific to GPD Pocket 2
+  ansible.builtin.package:
+    name:
+      # thermal / battery management
+      - thermald
+      - tlp
+      # touchscreen controls
+      - touchegg
+    state: present
+    update_cache: yes
+  become: yes
+- name: Start services
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  with_items:
+    - thermald
+    - tlp
+  become: true
+- name: Symlink base wm dotfiles
+  include_role:
+    name: dotfiles
+  vars:
+    dotfiles_src: files/user
+- name: Copy system configuration
+  copy:
+    src: system/etc/X11/xorg.conf.d/{{ item }}
+    dest: /etc/X11/xorg.conf.d/
+  with_items:
+    - "20-intel.conf"
+    - "30-monitor.conf"
+    - "99-touchscreen.conf"
+  become: true

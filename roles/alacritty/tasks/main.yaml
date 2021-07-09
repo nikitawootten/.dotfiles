@@ -1,0 +1,16 @@
+- name: Install Alacritty
+  package:
+    name: alacritty
+    state: present
+    update_cache: yes
+  become: yes
+- name: Ensure ~/.local/bin exists
+  file:
+    path: ~/.local/bin
+    state: directory
+# did I mention I hate xdg-open?
+- name: Symlink Alacritty to ~/.local/bin/xterm
+  file:
+    src: /bin/alacritty
+    path: ~/.local/bin/alacritty
+    state: link

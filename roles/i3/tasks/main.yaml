@@ -1,0 +1,12 @@
+- name: Install i3 and its dependencies
+  ansible.builtin.package:
+    name:
+      - i3-gaps
+      - i3blocks
+      - i3status
+    state: present
+    update_cache: yes
+  become: yes
+- name: Symlink i3-related dotfiles
+  include_role:
+    name: dotfiles

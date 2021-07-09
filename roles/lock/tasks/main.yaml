@@ -1,0 +1,14 @@
+---
+- name: Install lock packages
+  ansible.builtin.package:
+    name:
+      - xorg-xset
+      - xss-lock
+      - xsecurelock
+      - i3lock
+    state: present
+    update_cache: yes
+  become: true
+- name: Symlink lock-related dotfiles
+  include_role:
+    name: dotfiles

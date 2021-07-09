@@ -1,0 +1,5 @@
+#!/bin/sh
+
+unset f
+
+exec i3

@@ -1,0 +1,16 @@
+---
+argument_specs:
+  # roles/myapp/tasks/main.yml entry point
+  main:
+    short_description: The dotfile role creates directories and symlinks files found in dotfiles_src to dotfiles_dest
+    options:
+      dotfiles_src:
+        type: str
+        required: false
+        default: "files"
+        description: The source folder to symlink from
+      dotfiles_dest:
+        type: str
+        required: false
+        default: "~"
+        description: The destination folder to symlink to
