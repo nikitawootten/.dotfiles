@@ -9,18 +9,6 @@
     state: present
     update_cache: yes
   become: true
-- name: Create configration file directories
-  file:
-    path: ~/{{ item }}
-    state: directory
-  with_items:
-    - ".config/xinitrc.d"
-    - ".local/bin"
-- name: Symlink lock script and xinit
-  file:
-    src: "{{ role_path }}/files/{{ item }}"
-    path: "~/{{ item }}"
-    state: link
-  with_items:
-    - ".config/xinitrc.d/98-lock"
-    - ".local/bin/lockme"
+- name: Symlink lock-related dotfiles
+  include_role:
+    name: dotfiles

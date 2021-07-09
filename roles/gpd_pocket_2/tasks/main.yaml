@@ -18,23 +18,11 @@
     - thermald
     - tlp
   become: true
-- name: Create configuration file directories
-  file:
-    path: ~/{{ item }}
-    state: directory
-  with_items:
-    - ".config/touchegg"
-- name: Symlink relevant configuration files
-  file:
-    src: "{{ role_path }}/files/user/{{ item }}"
-    path: ~/{{ item }}
-    state: link
-  with_items:
-    - ".config/touchegg/touchegg.conf"
-    - ".config/gpdp2_Xmodmap"
-    - ".config/gpdp2_Xresources"
-    - ".pam_environment"
-    - ".config/xinitrc.d/10-gpdp2"
+- name: Symlink base wm dotfiles
+  include_role:
+    name: dotfiles
+  vars:
+    dotfiles_src: files/user
 - name: Copy system configuration
   copy:
     src: system/etc/X11/xorg.conf.d/{{ item }}

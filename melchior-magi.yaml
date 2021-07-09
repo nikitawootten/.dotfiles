@@ -2,7 +2,7 @@
 - name: Set up melchior-magi
   hosts: localhost
   roles:
-  # - amd_gpu
+  - amd_gpu
   - zsh
-  # - docker
-  # - i3
+  - docker
+  - i3

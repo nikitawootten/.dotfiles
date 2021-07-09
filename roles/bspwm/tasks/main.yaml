@@ -6,26 +6,6 @@
     state: present
     update_cache: yes
   become: true
-- name: Create configration file directories
-  file:
-    path: ~/{{ item }}
-    state: directory
-  with_items:
-    - ".config/xinitrc.d"
-    - ".config/bspwm"
-    - ".config/sxhkd"
-    - ".config/polybar"
-    - ".local/bin"
-- name: Symlink relevant configuration files
-  file:
-    src: "{{ role_path }}/files/{{ item }}"
-    path: "~/{{ item }}"
-    state: link
-  with_items:
-    - ".config/bspwm/bspwmrc"
-    - ".config/bspwm/external_rules"
-    - ".config/sxhkd/sxhkdrc"
-    - ".config/polybar/config"
-    - ".config/polybar/launch.sh"
-    - ".config/xinitrc.d/99-bspwm"
-    - ".local/bin/sxhkd_helper"
+- name: Symlink bspwm-related dotfiles
+  include_role:
+    name: dotfiles

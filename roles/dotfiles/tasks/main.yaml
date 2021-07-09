@@ -1,4 +1,9 @@
 ---
+- name: Ensure jmespath is installed
+  package:
+    name: python-jmespath
+    state: present
+  become: yes
 - name: Find dotfiles
   find:
     paths:
