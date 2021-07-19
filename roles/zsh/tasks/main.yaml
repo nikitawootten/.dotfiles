@@ -4,14 +4,6 @@
     state: present
     update_cache: yes
   become: yes
-- name: Create required directories for zsh
-  file:
-    path: ~/{{ item }}
-    state: directory
-  with_items:
-    - ".config/zshrc.d"
-    # local executables live here
-    - ".local/bin"
 - name: Symlink zsh dotfiles
   include_role:
     name: dotfiles
