@@ -2,7 +2,16 @@
 - name: Set up melchior-magi
   hosts: localhost
   roles:
-  - amd_gpu
-  - zsh
-  - docker
-  - i3
+    - amd_gpu
+    - zsh
+    - docker
+    - sway
+    - alacritty
+  tasks:
+    - name: Symlink files
+      file:
+        src: "{{ playbook_dir }}/files/melchior-magi/{{ item }}"
+        path: "~/{{ item }}"
+        state: link
+      with_items:
+        - .config/sway/config.d/melchior-magi

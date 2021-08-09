@@ -1,2 +1,0 @@
-# enable firefox touchscreen support :)
-MOZ_USE_XINPUT2 DEFAULT=1
