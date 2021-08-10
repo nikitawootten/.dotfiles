@@ -6,6 +6,7 @@
       - swayidle
       # wayland utils
       - wl-clipboard
+      - brightnessctl
       # dmenu replacement
       - wofi
       # backwards compatibility with x

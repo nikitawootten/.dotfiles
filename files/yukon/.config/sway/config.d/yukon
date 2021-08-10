@@ -1,3 +1,15 @@
 # Output configuration for yukon
 
 output eDP-1 transform 90
+
+# Input configuration
+
+# map touchscreen
+input 1046:911:Goodix_Capacitive_TouchScreen map_to_output eDP-1
+
+# hold right click to scroll
+input * {
+	scroll_method on_button_down 3
+	scroll_button button3
+}
+
