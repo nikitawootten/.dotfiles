@@ -7,6 +7,7 @@
       # wayland utils
       - wl-clipboard
       - brightnessctl
+      - mako
       # dmenu replacement
       - wofi
       # backwards compatibility with x

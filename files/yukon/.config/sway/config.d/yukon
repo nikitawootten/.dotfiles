@@ -1,6 +1,9 @@
 # Output configuration for yukon
 
-output eDP-1 transform 90
+output eDP-1 {
+	transform 90
+	scale 1.5
+}
 
 # Input configuration
 
