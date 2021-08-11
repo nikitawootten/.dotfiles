@@ -26,7 +26,7 @@
       become: true
     - name: Symlink files
       file:
-        src: "{{ playbook_dir }}/files/yuon/{{ item }}"
+        src: "{{ playbook_dir }}/files/yukon/{{ item }}"
         path: "~/{{ item }}"
         state: link
       with_items:
