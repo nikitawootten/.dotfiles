@@ -10,6 +10,6 @@ bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
 
 # screenshots
-bindsym Print exec grim - | tee ~/Pictures/screenshots/$(date +%F-%T).png | wl-copy && notify-send -u low "Screenshot taken"
-bindsym Control+Print exec grim -g $(slurp) - | tee /Pictures/screenshots/$(date +%F-%T).png | wl-copy && notify-send -u low "Screenshot taken"
+bindsym Print exec screenshot
+bindsym Control+Print exec screenshot selection
 
