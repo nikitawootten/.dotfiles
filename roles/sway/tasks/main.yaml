@@ -10,6 +10,7 @@
       - wofi
       # backwards compatibility with x
       - xorg-xwayland
+      - xorg-xhost
       # screen capture/shot utilities
       - grim
       - slurp
