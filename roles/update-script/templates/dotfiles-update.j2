@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+echo "Running Play {{ playbook_baseName }}"
+
+(cd {{ playbook_dir }}; ansible-playbook -K {{ playbook_baseName }} $@)

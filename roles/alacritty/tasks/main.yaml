@@ -12,5 +12,5 @@
 - name: Symlink Alacritty to ~/.local/bin/xterm
   file:
     src: /bin/alacritty
-    path: ~/.local/bin/alacritty
+    path: ~/.local/bin/xterm
     state: link
