@@ -5,6 +5,7 @@
   - zsh
   - docker
   - sway
+  - update-script
   tasks:
     - name: Install packages specific to GPD Pocket 2
       ansible.builtin.package:
