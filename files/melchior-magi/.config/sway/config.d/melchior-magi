@@ -2,10 +2,10 @@
 
 # Ultrawide
 # Leave at 100Hz until using a DP 1.4 output
-output DP-4 pos 0 0 res 3440x1440@100Hz
-output DP-4 bg ~/Pictures/Wallpapers/macro-leaves.png fill
+output DP-1 pos 0 0 res 3440x1440@100Hz
+output DP-1 bg ~/Pictures/Wallpapers/macro-leaves.png fill
 
 # Sideways monitor
-output HDMI-A-2 transform 270
-output HDMI-A-2 pos 3440 0 res 1920x1080
-output HDMI-A-2 bg ~/Pictures/Wallpapers/macro-leaves.png center
+output HDMI-A-1 transform 270
+output HDMI-A-1 pos 3440 0 res 1920x1080
+output HDMI-A-1 bg ~/Pictures/Wallpapers/macro-leaves.png center

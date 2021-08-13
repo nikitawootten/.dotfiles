@@ -9,7 +9,7 @@ case $1 in
 			"Screenshot Taken"
 		;;
 	*)
-		grim  | tee $FILENAME | wl-copy \
+		grim - | tee $FILENAME | tee $FILENAME | wl-copy \
 			&& notify-send -u low -t 5000 -i $FILENAME \
 			"Screenshot Taken"
 		;;
