@@ -1,6 +1,11 @@
-- name: Install zsh
-  package:
-    name: zsh
+- name: Install zsh and zsh plugins
+  ansible.builtin.package:
+    name:
+      - zsh
+      - zsh-autosuggestions
+      - zsh-completions
+      - zsh-history-substring-search
+      - zsh-syntax-highlighting
     state: present
     update_cache: yes
   become: yes
