@@ -16,4 +16,4 @@
   ansible.builtin.file:
     path: ~/.ssh/config.d
     state: directory
-    mode: '0600'
+    mode: '0700'
