@@ -1,0 +1,9 @@
+---
+argument_specs:
+  main:
+    short_description: Yubikey role
+    options:
+      key_id:
+        type: str
+        required: false
+        description: The id of the key to attempt to import

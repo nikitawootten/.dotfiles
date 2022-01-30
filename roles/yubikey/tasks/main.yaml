@@ -1,0 +1,28 @@
+- name: Install Yubikey and PGP-related packages
+  ansible.builtin.package:
+    name:
+      - gnupg
+      - pcsclite
+      - ccid
+      - hopenpgp-tools
+      - yubikey-personalization
+      - yubikey-manager
+    state: present
+    update_cache: yes
+  become: yes
+- name: Enable pcscd
+  ansible.builtin.systemd:
+    name: pcscd
+    enabled: yes
+  become: yes
+- name: Symlink configs
+  include_role:
+    name: dotfiles
+- name: Import GPG key
+  ansible.builtin.command: gpg --batch --recv {{ key_id }}
+- name: Trust GPG key
+  ansible.builtin.shell: echo -e "5\ny\n" | gpg --command-fd 0 --edit-key {{ key_id }} trust
+- name: Configure Git for keysigning
+  ansible.builtin.shell: |
+    git config --global commit.gpgsign true
+    git config --global user.signingkey = {{ key_id }}
