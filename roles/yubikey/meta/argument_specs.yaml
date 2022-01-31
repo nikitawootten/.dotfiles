@@ -6,5 +6,5 @@ argument_specs:
       key_id:
         type: str
         required: false
-        defult: "0x0D418BA5CA014A62"
+        defult: "0xAC4A02D80C2F00DC82EE1EFA0D418BA5CA014A62"
         description: The id of the key to attempt to import
