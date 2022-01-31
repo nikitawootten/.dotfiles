@@ -1,9 +1,0 @@
-- name: Install AMD GPU related packages and drivers
-  ansible.builtin.package:
-    name:
-      - xf86-video-amdgpu
-      - vulkan-radeon
-      - radeontop
-    state: present
-    update_cache: yes
-  become: yes

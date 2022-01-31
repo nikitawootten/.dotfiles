@@ -1,8 +1,0 @@
-- name: Install base-devel and Git
-  ansible.builtin.package:
-    name:
-      - git
-      - base-devel
-    state: present
-  become: yes
-- 
