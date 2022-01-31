@@ -1,15 +1,16 @@
 # history
 
 HISTFILE=~/.zsh_history
-HISTSIZE=50000
-SAVEHIST=10000
+HISTSIZE=30000
+SAVEHIST=8000
+HISTDUP=erase
 
 setopt EXTENDED_HISTORY
 
 # share history across multiple zsh sessions
 setopt SHARE_HISTORY
 # append to history
-#setopt APPEND_HISTORY
+setopt APPEND_HISTORY
 
 # adds commands as they are typed, not at shell exit
 setopt INC_APPEND_HISTORY
