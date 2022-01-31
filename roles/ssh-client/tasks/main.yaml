@@ -1,0 +1,19 @@
+- name: Install Git
+  ansible.builtin.package:
+    name:
+      - openssh
+    state: present
+  become: yes
+- name: Assert directory permissions
+  ansible.builtin.file:
+    path: ~/.ssh
+    state: directory
+    mode: '0700'
+- name: Symlink ssh-client dependencies
+  include_role:
+    name: dotfiles
+- name: Assert config permissions
+  ansible.builtin.file:
+    path: ~/.ssh/config.d
+    state: directory
+    mode: '0700'

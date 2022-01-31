@@ -2,7 +2,8 @@
 
 output eDP-1 {
 	transform 90
-	scale 1.5
+	scale 1.6
+	bg ~/Pictures/walls/subway_tunnel_2.jpg fill
 }
 
 # Input configuration

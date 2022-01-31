@@ -2,11 +2,11 @@
 - name: Set up melchior-magi
   hosts: localhost
   roles:
-    - amd_gpu
     - zsh
     - docker
-    - sway
-    - alacritty
+    - ssh-client
+    - git
+    - yubikey
     - update-script
   tasks:
     - name: Symlink files

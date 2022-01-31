@@ -2,10 +2,13 @@
 - name: Set up yukon
   hosts: localhost
   roles:
-  - zsh
-  - docker
-  - sway
-  - update-script
+    - zsh
+    - docker
+    - sway
+    - ssh-client
+    - git
+    - yubikey
+    - update-script
   tasks:
     - name: Install packages specific to GPD Pocket 2
       ansible.builtin.package:
