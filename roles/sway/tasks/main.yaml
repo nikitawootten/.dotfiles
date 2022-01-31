@@ -24,7 +24,7 @@
   include_role:
     name: dotfiles
 - name: Enable startup services
-  systemd:
+  ansible.builtin.systemd:
     name: "{{ item }}"
     enabled: yes
     scope: user

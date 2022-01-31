@@ -7,6 +7,7 @@
       - hopenpgp-tools
       - yubikey-personalization
       - yubikey-manager
+      - yubikey-touch-detector
     state: present
     update_cache: yes
   become: yes
@@ -14,7 +15,14 @@
   ansible.builtin.systemd:
     name: pcscd
     enabled: yes
+    state: started
   become: yes
+- name: Enable yubikey-touch-detector
+  ansible.builtin.systemd:
+    name: yubikey-touch-detector
+    enabled: yes
+    state: started
+    scope: user
 - name: Symlink configs
   include_role:
     name: dotfiles
