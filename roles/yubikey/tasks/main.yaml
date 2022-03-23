@@ -4,7 +4,7 @@
       - gnupg
       - pcsclite
       - ccid
-      - hopenpgp-tools
+      #- hopenpgp-tools
       - yubikey-personalization
       - yubikey-manager
       - yubikey-touch-detector

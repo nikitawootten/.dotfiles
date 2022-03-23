@@ -1,25 +1,13 @@
 # history
 
-HISTFILE=~/.zsh_history
-HISTSIZE=30000
-SAVEHIST=8000
-HISTDUP=erase
+export HISTFILE=~/.zsh_history
+export HISTSIZE=1000000   # the number of items for the internal history list
+export SAVEHIST=1000000   # maximum number of items for the history file
 
-setopt EXTENDED_HISTORY
-
-# share history across multiple zsh sessions
-setopt SHARE_HISTORY
-# append to history
-setopt APPEND_HISTORY
-
-# adds commands as they are typed, not at shell exit
-setopt INC_APPEND_HISTORY
-
-# expire duplicates first
-setopt HIST_EXPIRE_DUPS_FIRST 
-# do not store duplications
-setopt HIST_IGNORE_DUPS
-#ignore duplicates when searching
-setopt HIST_FIND_NO_DUPS
-# removes blank lines from history
-setopt HIST_REDUCE_BLANKS
+# The meaning of these options can be found in man page of `zshoptions`.
+setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
+setopt HIST_SAVE_NO_DUPS  # do not save duplicated command
+setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
+setopt INC_APPEND_HISTORY_TIME  # append command to history file immediately after execution
+setopt EXTENDED_HISTORY  # record command start time
+#setopt SHARE_HISTORY

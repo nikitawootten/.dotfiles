@@ -1,3 +1,7 @@
+- name: Create required directories
+  file:
+    path: ~/.local/bin
+    state: directory
 - name: Get playbook info
   set_fact:
     playbook_baseName: "{{ (lookup('file', '/proc/self/cmdline') | regex_replace('\u0000',' ')).split() | select('match','^.*[.]ya?ml$') | list | first | basename }}"

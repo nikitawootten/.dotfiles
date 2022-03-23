@@ -1,0 +1,18 @@
+---
+- name: Set up casper-magi
+  hosts: localhost
+  roles:
+    - zsh
+    - docker
+    - ssh-client
+    - git
+    - yubikey
+    - update-script
+  # tasks:
+  #  - name: Symlink files
+  #    file:
+  #      src: "{{ playbook_dir }}/files/melchior-magi/{{ item }}"
+  #      path: "~/{{ item }}"
+  #      state: link
+  #    with_items:
+  #      - .config/sway/config.d/melchior-magi

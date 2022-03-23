@@ -9,7 +9,8 @@ These *plays* act as "entrypoint" of my configuration.
 - A *play* is composed of multiple *roles*, with some extra configuration on top.
 
 ### Play Index
-- [`melchior-magi`](./melchior-magi.yaml): My desktop machine running Arch Linux.
+<!-- - [`melchior-magi`](./melchior-magi.yaml): My desktop machine running Arch Linux. -->
+- [`casper-magi`](./casper-magi.yaml): My framework laptop running Arch Linux.
 - [`yukon`](./yukon.yaml): My beloved GPD Pocket 2 also running Arch Linux.
 Is a laptop that fits in my pocket practical? No, but I love it anyways.
 

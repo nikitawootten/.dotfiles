@@ -3,7 +3,6 @@
     name:
       - zsh
       - zsh-completions
-      - zsh-history-substring-search
       - zsh-syntax-highlighting
     state: present
     update_cache: yes
