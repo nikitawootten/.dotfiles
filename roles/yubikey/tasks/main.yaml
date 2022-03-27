@@ -17,15 +17,27 @@
     enabled: yes
     state: started
   become: yes
+- name: Ensure ~/.config/systemd/user exists
+  file:
+    path: ~/.config/systemd/user
+    state: directory
 - name: Symlink configs
   include_role:
     name: dotfiles
-- name: Enable yubikey-touch-detector
+- name: Enable auth services
   ansible.builtin.systemd:
-    name: yubikey-touch-detector
+    name: "{{ item }}"
     enabled: yes
     state: started
     scope: user
+  with_items:
+    - yubikey-touch-detector
+    # Stolen from /usr/share/doc/gnupg/examples/systemd-user/
+    - dirmngr.socket
+    - gpg-agent-browser.socket
+    - gpg-agent-extra.socket
+    - gpg-agent-ssh.socket
+    - gpg-agent.socket
 - name: List the keys before importing
   ansible.builtin.command: gpg -K
   changed_when: false
