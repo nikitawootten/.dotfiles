@@ -1,5 +1,6 @@
 {
-    "files.associations": {
-        "*.yaml": "ansible"
-      }
+  "files.associations": {
+    "*.yaml": "ansible"
+  },
+  "nix.enableLanguageServer": true
 }
