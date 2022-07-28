@@ -1,12 +1,12 @@
-{ config, pkgs, ... }: {
-  imports = [
-    <home-manager/nixos>
-  ];
+{ inputs, config, pkgs, ... }: {
+  # imports = [
+  #   inputs.home-manager.nixosModules.home-manager
+  # ];
 
   users.users.nikita = {
     isNormalUser = true;
     description = "Nikita Wootten";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
     packages = with pkgs; [
       firefox
     ];

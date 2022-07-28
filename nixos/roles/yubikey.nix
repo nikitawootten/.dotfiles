@@ -19,8 +19,4 @@ in {
   '';
 
   programs.ssh.startAgent = false;
-
-  home-manager.users.${username} = {
-
-  };
 }

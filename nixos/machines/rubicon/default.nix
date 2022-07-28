@@ -1,15 +1,14 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 let
   username = import ../../users/username.nix;
 in {
   imports = [
+    inputs.hardware.nixosModules.framework
     ./hardware-configuration.nix
-    <nixos-hardware/framework>
     ../../roles/gnome.nix
     ../../roles/networkmanager.nix
     ../../roles/tailscale.nix
     ../../roles/yubikey.nix
-    ../../roles/git.nix
     ../../users/${username}.nix
   ];
 
@@ -29,6 +28,7 @@ in {
   # Suspend-then-hibernate everywhere
   services.logind = {
     lidSwitch = "suspend-then-hibernate";
+    lidSwitchExternalPower = "lock";
     extraConfig = ''
       HandlePowerKey=suspend-then-hibernate
       IdleAction=suspend-then-hibernate
@@ -42,6 +42,9 @@ in {
   services.printing.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+
+  virtualisation.docker.enable = true;
+
 
   environment.systemPackages = with pkgs; [
     vim
