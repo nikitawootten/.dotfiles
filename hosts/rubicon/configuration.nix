@@ -1,9 +1,9 @@
 { config, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
-    ../system-common/gnome.nix
-    ../system-common/sound.nix
-    ../system-common/tailscale.nix
+    ../common/global
+    ../common/environments/gnome.nix
+    ../common/optional/power.nix
   ];
 
   # Firmware updater
@@ -19,56 +19,10 @@
     "/crypto_keyfile.bin" = null;
   };
 
-  # Suspend-then-hibernate everywhere
-  services.logind = {
-    lidSwitch = "suspend-then-hibernate";
-    lidSwitchExternalPower = "lock";
-    extraConfig = ''
-      HandlePowerKey=suspend-then-hibernate
-      IdleAction=suspend-then-hibernate
-      IdleActionSec=10m
-    '';
-  };
-  systemd.sleep.extraConfig = "HibernateDelaySec=2h";
   networking.hostName = "rubicon";
-
-    # Set your time zone.
-  time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.utf8";
-
-    # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
-
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    autoOptimiseStore = true;
-  };
-
-  # Auto upgrade
-  system.autoUpgrade = {
-    enable = true;
-    channel = "https://nixos.org/channels/nixos";
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
-
-  virtualisation = {
-    docker = {
-      enable = true;
-      rootless.enable = true;
-    };
-  };
 
   environment.systemPackages = with pkgs; [
     vim
@@ -84,7 +38,6 @@
     createHome = true;
     extraGroups = [
       "wheel"
-      "docker"
       "video"
       "audio"
       "disk"
@@ -94,5 +47,7 @@
     uid = 1000;
   };
 
-  system.stateVersion = "22.05";
+  networking.firewall.enable = false;
+
+  services.pcscd.enable = true;
 }

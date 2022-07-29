@@ -3,11 +3,12 @@
     package = pkgs.pinentry-gnome;
     name = "gnome3";
   };
-  keyId = {
+  keyGrip = {
     auth = "7ACE37A0932D3D4D950BEAFF3159F9848A1C33FF";
     encrypt = "415DB258900BA323991FDD97864235D26A0BA85C";
     sign = "916363FC4E9384AF585836DEC171225E0A2F6B8C";
   };
+  keyId = "0xAC4A02D80C2F00DC82EE1EFA0D418BA5CA014A62";
   pkText = ''
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Comment: Hostname: 
@@ -141,7 +142,7 @@ in {
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    sshKeys = [ keyId.auth ];
+    sshKeys = [ keyGrip.auth ];
     pinentryFlavor = pinentry.name;
     enableExtraSocket = true;
   };
@@ -164,9 +165,9 @@ in {
 
   programs.git = {
     signing = {
-      key = keyId.sign;
+      key = keyId;
       signByDefault = true;
-      # gpgPath = "${pkgs.gnupg}/bin/gpg";
+      gpgPath = "${pkgs.gnupg}/bin/gpg";
     };
   };
 }
