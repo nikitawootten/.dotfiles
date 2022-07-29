@@ -1,7 +1,3 @@
 {
-  "files.associations": {
-    "*.yaml": "ansible"
-  },
   "nix.enableLanguageServer": true,
-  "nixEnvSelector.nixFile": "${workspaceRoot}/shell.nix"
 }
