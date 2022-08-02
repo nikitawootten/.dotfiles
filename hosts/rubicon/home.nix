@@ -2,6 +2,7 @@
   imports = [
     ../../programs/git.nix
     ../../programs/gpg.nix
+    # ../../programs/sway.nix
   ];
 
   home.username = "nikita";

@@ -3,7 +3,9 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/environments/gnome.nix
+    # ../common/environments/sway.nix
     ../common/optional/power.nix
+    ../common/optional/networkmanager.nix
   ];
 
   # Firmware updater
@@ -29,25 +31,5 @@
   ];
 
   services.flatpak.enable = true;
-
-  networking.networkmanager.enable = true;
-
-  users.users.nikita = {
-    isNormalUser = true;
-    description = "Nikita Wootten";
-    createHome = true;
-    extraGroups = [
-      "wheel"
-      "video"
-      "audio"
-      "disk"
-      "networkmanager"
-    ];
-    home = "/home/nikita";
-    uid = 1000;
-  };
-
-  networking.firewall.enable = false;
-
   services.pcscd.enable = true;
 }
