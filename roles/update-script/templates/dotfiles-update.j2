@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
+# Note: this file is generated from the update-script role (found in {{ playbook_dir }}/roles/update-script).
 
-echo "Running Play {{ playbook_baseName }}"
+echo "Running Play {{ playbookBaseName }}"
 
-(cd {{ playbook_dir }}; ansible-playbook -K {{ playbook_baseName }} $@)
+(cd {{ playbook_dir }}; ansible-playbook -i hosts -K {{ playbookBaseName }} $@)

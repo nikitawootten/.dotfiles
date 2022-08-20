@@ -9,10 +9,7 @@ These *plays* act as "entrypoint" of my configuration.
 - A *play* is composed of multiple *roles*, with some extra configuration on top.
 
 ### Play Index
-<!-- - [`melchior-magi`](./melchior-magi.yaml): My desktop machine running Arch Linux. -->
-- [`casper-magi`](./casper-magi.yaml): My framework laptop running Arch Linux.
-- [`yukon`](./yukon.yaml): My beloved GPD Pocket 2 also running Arch Linux.
-Is a laptop that fits in my pocket practical? No, but I love it anyways.
+- [`yukon`](./yukon.yaml): My framework laptop running Arch Linux.
 
 ### Role Index
 *NOTE: Most of these roles will only work on Arch Linux.*
@@ -28,7 +25,7 @@ This role is used by some of the other roles in this list to symlink configurati
 - [`ssh-client`](./roles/ssh-client): Installs and configures SSH with a special config dir `~/.ssh/config.d/` where additional SSH configurations can be injected. 
 - [`sway`](./roles/sway): Installs and configures [SwayWM](https://swaywm.org/) as well as a suite of other Wayland applications.
 - [`update-script`](./roles/update-script): Creates a script `dotfiles-update`, which can be used to rerun the Ansible play.
-- [`yubikey`](./roles/yubikey): Installs GPG and Yubikey related utlities, and configures SSH and Git to use Yubikey for authorization and commit signing. Do not use verbatim unless you have ambitions of stealing my identity.
+- [`yubikey`](./roles/yubikey): Installs GPG and Yubikey related utilities, and configures SSH and Git to use Yubikey for authorization and commit signing. Do not use verbatim unless you have ambitions of stealing my identity.
 - [`zsh`](./roles/zsh): Installs and configures ZSH with a special config dir `~/.config/zshrc.d/` where additional ZSH configurations can be injected.
 
 ## Running
@@ -38,7 +35,7 @@ I have a play for each machine (or group of machines).
 ```bash
 # warning this WILL overwrite anything you have set up!
 # do not run this unless you know what you are doing!
-ansible-playbook -K <host>.yaml
+ansible-playbook -i hosts -K <host>.yaml
 ```
 
 For subsequent runs, I can run the helper script `dotfiles-update`.

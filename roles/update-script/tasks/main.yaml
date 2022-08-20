@@ -1,12 +1,12 @@
 - name: Create required directories
-  file:
+  ansible.builtin.file:
     path: ~/.local/bin
     state: directory
 - name: Get playbook info
-  set_fact:
-    playbook_baseName: "{{ (lookup('file', '/proc/self/cmdline') | regex_replace('\u0000',' ')).split() | select('match','^.*[.]ya?ml$') | list | first | basename }}"
+  ansible.builtin.set_fact:
+    playbookBaseName: "{{ (lookup('file', '/proc/self/cmdline') | regex_replace('\u0000',' ')).split() | select('match','^.*[.]ya?ml$') | list | first | basename }}"
 - name: Create update script
-  template:
+  ansible.builtin.template:
     src: dotfiles-update.j2
     dest: ~/.local/bin/dotfiles-update
     mode: 0744

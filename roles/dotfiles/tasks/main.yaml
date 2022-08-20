@@ -1,19 +1,19 @@
 ---
 - name: Ensure jmespath is installed
-  package:
+  ansible.builtin.package:
     name: python-jmespath
     state: present
-  become: yes
+  become: true
 - name: Find dotfiles
-  find:
+  ansible.builtin.find:
     paths:
       # find dotfiles in folder called by parent role
       - "{{ ansible_parent_role_paths[0] }}/{{ dotfiles_src }}"
-    recurse: yes
-    hidden: yes
+    recurse: true
+    hidden: true
   register: find
 - name: Create dotfiles directories
-  file:
+  ansible.builtin.file:
     path: "{{ dotfiles_dest }}/{{ item | regex_replace('(^' + ansible_parent_role_paths[0] + '/' + dotfiles_src + '/)(?P<dir>.*/)(.*$)', '\\g<dir>') }}"
     state: directory
   # This is a multistep filter:
@@ -23,7 +23,7 @@
   # 4. Select only unique matches
   with_items: "{{ find.files | json_query('[].path') | map('regex_search', '^' + ansible_parent_role_paths[0] + '/' + dotfiles_src + '/.*/') | select('string') | list | unique }}"
 - name: Symlink dotfiles
-  file:
+  ansible.builtin.file:
     src: "{{ item.path }}"
     # Remove path before {{ ansible_parent_role_paths[0] }}/{{ dotfiles_src }}
     path: "{{ dotfiles_dest }}/{{ item.path | regex_replace('(^' + ansible_parent_role_paths[0] + '/' + dotfiles_src + '/)(.*)', '\\g<2>') }}"

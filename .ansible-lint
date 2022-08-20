@@ -1,0 +1,10 @@
+skip_list:
+  # for a user system this rule does not make sense
+  - package-latest
+  # false positives with git configs
+  - command-instead-of-module
+  # I have some long commands
+  - yaml[line-length]
+  - risky-file-permissions
+  - var-naming
+  - role-name

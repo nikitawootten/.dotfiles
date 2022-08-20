@@ -2,10 +2,10 @@
   ansible.builtin.package:
     name: gnome-keyring
     state: present
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
 - name: Copy PAM configuration for Gnome Keyring
-  copy:
+  ansible.builtin.copy:
     src: /etc/pam.d/login
     dest: /etc/pam.d/login
-  become: yes
+  become: true

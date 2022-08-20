@@ -4,30 +4,30 @@
       - gnupg
       - pcsclite
       - ccid
-      #- hopenpgp-tools
+      # - hopenpgp-tools
       - yubikey-personalization
       - yubikey-manager
       - yubikey-touch-detector
     state: present
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
 - name: Enable pcscd
   ansible.builtin.systemd:
     name: pcscd
-    enabled: yes
+    enabled: true
     state: started
-  become: yes
+  become: true
 - name: Ensure ~/.config/systemd/user exists
-  file:
+  ansible.builtin.file:
     path: ~/.config/systemd/user
     state: directory
 - name: Symlink configs
-  include_role:
+  ansible.builtin.include_role:
     name: dotfiles
 - name: Enable auth services
   ansible.builtin.systemd:
     name: "{{ item }}"
-    enabled: yes
+    enabled: true
     state: started
     scope: user
   with_items:
@@ -46,7 +46,9 @@
   ansible.builtin.command: gpg --batch --recv {{ key_id }}
   changed_when: false
 - name: Trust GPG key
-  ansible.builtin.shell: echo -e "5\ny\n" | gpg --command-fd 0 --edit-key {{ key_id }} trust
+  ansible.builtin.shell: |
+    set -o pipefail
+    echo -e "5\ny\n" | gpg --command-fd 0 --edit-key {{ key_id }} trust
   changed_when: false
 - name: List the keys after importing
   ansible.builtin.command: gpg -K

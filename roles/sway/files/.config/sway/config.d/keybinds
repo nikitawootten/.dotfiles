@@ -12,4 +12,3 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
 # screenshots
 bindsym Print exec screenshot
 bindsym Control+Print exec screenshot selection
-

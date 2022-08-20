@@ -5,15 +5,15 @@
       - zsh-completions
       - zsh-syntax-highlighting
     state: present
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
 - name: Symlink zsh dotfiles
-  include_role:
+  ansible.builtin.include_role:
     name: dotfiles
-- name: change user shell to zsh 
+- name: change user shell to zsh
   vars:
     the_user: "{{ ansible_user_id }}"
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_user_id }}"
     shell: /bin/zsh
-  become: yes
+  become: true

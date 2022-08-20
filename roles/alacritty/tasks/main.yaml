@@ -1,16 +1,16 @@
 - name: Install Alacritty
-  package:
+  ansible.builtin.package:
     name: alacritty
     state: present
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
 - name: Ensure ~/.local/bin exists
-  file:
+  ansible.builtin.file:
     path: ~/.local/bin
     state: directory
 # did I mention I hate xdg-open?
 - name: Symlink Alacritty to ~/.local/bin/xterm
-  file:
+  ansible.builtin.file:
     src: /bin/alacritty
     path: ~/.local/bin/xterm
     state: link

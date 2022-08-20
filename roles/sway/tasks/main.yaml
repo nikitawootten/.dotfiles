@@ -17,16 +17,17 @@
       - grim
       - slurp
       - wf-recorder
+      - xdg-desktop-portal-wlr
     state: present
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
 - name: Symlink Sway-related dotfiles
-  include_role:
+  ansible.builtin.include_role:
     name: dotfiles
 - name: Enable startup services
   ansible.builtin.systemd:
     name: "{{ item }}"
-    enabled: yes
+    enabled: true
     scope: user
   with_items:
     - gnome-keyring-daemon

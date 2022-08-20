@@ -1,5 +1,8 @@
 {
     "files.associations": {
         "*.yaml": "ansible"
-      }
+      },
+      "cSpell.words": [
+        "alacritty"
+      ]
 }

@@ -1,35 +1,16 @@
 ---
-- name: Set up yukon
+- name: Set up casper-magi
   hosts: localhost
   roles:
-    - zsh
     - docker
-    - sway
     - ssh-client
     - git
-    - yubikey
+    - sway
+    - zsh
     - update-script
   tasks:
-    - name: Install packages specific to GPD Pocket 2
-      ansible.builtin.package:
-        name:
-          # thermal / battery management
-          - thermald
-          - tlp
-        state: present
-        update_cache: yes
-      become: yes
-    - name: Start services
-      systemd:
-        name: "{{ item }}"
-        enabled: yes
-        state: started
-      with_items:
-        - thermald
-        - tlp
-      become: true
     - name: Symlink files
-      file:
+      ansible.builtin.file:
         src: "{{ playbook_dir }}/files/yukon/{{ item }}"
         path: "~/{{ item }}"
         state: link

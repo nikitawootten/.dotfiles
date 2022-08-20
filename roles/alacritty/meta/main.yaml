@@ -1,4 +1,4 @@
 ---
 dependencies:
-  # .local/bin must be added to the path 
+  # .local/bin must be added to the path
   - role: zsh

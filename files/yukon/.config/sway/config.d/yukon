@@ -1,19 +1,5 @@
 # Output configuration for yukon
 
 output eDP-1 {
-	transform 90
-	scale 1.6
-	bg ~/Pictures/walls/subway_tunnel_2.jpg fill
+	scale 1.25
 }
-
-# Input configuration
-
-# map touchscreen
-input 1046:911:Goodix_Capacitive_TouchScreen map_to_output eDP-1
-
-# hold right click to scroll
-input * {
-	scroll_method on_button_down 3
-	scroll_button button3
-}
-
