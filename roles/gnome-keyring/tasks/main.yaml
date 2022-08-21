@@ -4,8 +4,26 @@
     state: present
     update_cache: true
   become: true
-- name: Copy PAM configuration for Gnome Keyring
-  ansible.builtin.copy:
-    src: /etc/pam.d/login
-    dest: /etc/pam.d/login
+- name: Add auth pam_gnome_keyring rule to login PAM after auth system-local-login
+  community.general.pamd:
+    name: login
+    type: auth
+    control: include
+    module_path: system-local-login
+    new_type: auth
+    new_control: optional
+    new_module_path: pam_gnome_keyring.so
+    state: after
+  become: true
+- name: Add session pam_gnome_keyring to login PAM after password system-local-login
+  community.general.pamd:
+    name: login
+    type: password
+    control: include
+    module_path: system-local-login
+    new_type: session
+    new_control: optional
+    new_module_path: pam_gnome_keyring.so
+    module_arguments: auto_start
+    state: after
   become: true

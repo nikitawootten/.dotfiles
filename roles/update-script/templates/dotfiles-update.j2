@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # Note: this file is generated from the update-script role (found in {{ playbook_dir }}/roles/update-script).
 
+echo "Ensuring Ansible Galaxy dependencies are installed"
+
+(cd {{ playbook_dir }}; ansible-galaxy install -r requirements.yaml)
+
 echo "Running Play {{ playbookBaseName }}"
 
 (cd {{ playbook_dir }}; ansible-playbook -i hosts -K {{ playbookBaseName }} $@)
