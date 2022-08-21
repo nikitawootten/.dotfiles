@@ -1,0 +1,11 @@
+---
+argument_specs:
+  # roles/myapp/tasks/main.yml entry point
+  main:
+    short_description: The dotfile role creates directories and symlinks files found in dotfiles_src to dotfiles_dest
+    options:
+      yay_packages:
+        type: list
+        elements: str
+        required: true
+        description: The yay packages to install

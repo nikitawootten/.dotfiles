@@ -2,7 +2,7 @@
   ansible.builtin.package:
     name:
       - sway
-      - swaylock
+      # - swaylock
       - swayidle
       # wayland utils
       - wl-clipboard
@@ -21,6 +21,12 @@
     state: present
     update_cache: true
   become: true
+- name: Install Swaylock Effects
+  ansible.builtin.include_role:
+    name: yay
+  vars:
+    yay_packages:
+      - swaylock-effects-git
 - name: Symlink Sway-related dotfiles
   ansible.builtin.include_role:
     name: dotfiles

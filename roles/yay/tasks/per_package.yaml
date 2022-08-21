@@ -1,0 +1,6 @@
+---
+# TODO: this is not remotely valid
+- name: Install {{ yay_package }}
+  ansible.builtin.shell: |
+    yay -S --noprovides --answerdiff None --answerclean None --mflags "--noconfirm" {{ yay_package }}
+  changed_when: false

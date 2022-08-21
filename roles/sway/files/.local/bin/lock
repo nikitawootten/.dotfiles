@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -eu
+
+# path to self
+SELF_PATH=$(realpath "$0")
+
+SWAYLOCK_EFFECTS="--indicator --screenshots --clock --effect-pixelate 8"
+
+case ${1-locknow} in
+	"idle")
+		swaylock -f $SWAYLOCK_EFFECTS --grace 10 --fade-in 3
+		;;
+    "idlesetup")
+        swayidle -w \
+            timeout 300 "$SELF_PATH idle" \
+            timeout 600 'swaymsg "output * dpms off"' \
+                resume 'swaymsg "output * dpms on"' \
+            before-sleep "$SELF_PATH locknow"
+        ;;
+	"locknow")
+		swaylock -f $SWAYLOCK_EFFECTS
+		;;
+esac
