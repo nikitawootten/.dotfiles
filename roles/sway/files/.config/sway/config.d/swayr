@@ -1,0 +1,7 @@
+bindsym $mod+Tab exec swayr prev-window all-workspaces
+bindsym $mod+Shift+Tab exec swayr next-window all-workspaces
+
+bindsym $mod+Control+Tab exec swayr switch-window
+
+bindsym $mod+c exec swayr execute-swaymsg-command
+bindsym $mod+Control+c exec swayr execute-swayr-command

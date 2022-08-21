@@ -1,0 +1,11 @@
+[Unit]
+Description=Swayr, a window-switcher & more for Sway
+Documentation=https://sr.ht/~tsdh/swayr/
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=swayrd
+
+[Install]
+WantedBy=sway-session.target

@@ -21,12 +21,13 @@
     state: present
     update_cache: true
   become: true
-- name: Install Swaylock Effects
+- name: Install Swaylock Effects & Swayr
   ansible.builtin.include_role:
     name: yay
   vars:
     yay_packages:
       - swaylock-effects-git
+      - swayr
 - name: Symlink Sway-related dotfiles
   ansible.builtin.include_role:
     name: dotfiles
@@ -38,3 +39,4 @@
   with_items:
     - gnome-keyring-daemon
     - swayidle
+    - swayrd
