@@ -6,4 +6,4 @@ ExecStart=/usr/bin/gnome-keyring-daemon --start --foreground --components=pkcs11
 Restart=on-abort
 
 [Install]
-WantedBy=sway-session.target
+WantedBy=graphical-session.target

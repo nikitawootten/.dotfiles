@@ -37,6 +37,5 @@
     enabled: true
     scope: user
   with_items:
-    - gnome-keyring-daemon
     - swayidle
     - swayrd
