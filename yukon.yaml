@@ -6,7 +6,9 @@
     - ssh-client
     - git
     - sway
+    # - hyprland
     - zsh
+    - yubikey
     - update-script
   tasks:
     - name: Symlink files

@@ -1,0 +1,9 @@
+- name: Install Hyprland
+  ansible.builtin.include_role:
+    name: yay
+  vars:
+    yay_packages:
+      - hyprland-bin
+- name: Symlink Sway-related dotfiles
+  ansible.builtin.include_role:
+    name: dotfiles
