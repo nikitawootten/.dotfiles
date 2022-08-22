@@ -4,13 +4,16 @@
       - zsh
       - zsh-completions
       - zsh-syntax-highlighting
+      # commonly used shell utils
+      - jq
+      - ranger
     state: present
     update_cache: true
   become: true
 - name: Symlink zsh dotfiles
   ansible.builtin.include_role:
-    name: dotfiles
-- name: change user shell to zsh
+    name: util-dotfiles
+- name: Change user shell to zsh
   vars:
     the_user: "{{ ansible_user_id }}"
   ansible.builtin.user:

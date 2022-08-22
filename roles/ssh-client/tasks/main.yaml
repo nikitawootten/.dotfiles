@@ -11,7 +11,7 @@
     mode: '0700'
 - name: Symlink ssh-client dependencies
   ansible.builtin.include_role:
-    name: dotfiles
+    name: util-dotfiles
 - name: Assert config permissions
   ansible.builtin.file:
     path: ~/.ssh/config.d

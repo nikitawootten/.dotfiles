@@ -1,0 +1,7 @@
+- name: Install PyWal
+  ansible.builtin.package:
+    name:
+      - python-pywal
+    state: present
+    update_cache: true
+  become: true

@@ -23,14 +23,14 @@
   become: true
 - name: Install Swaylock Effects & Swayr
   ansible.builtin.include_role:
-    name: yay
+    name: util-yay
   vars:
     yay_packages:
       - swaylock-effects-git
       - swayr
 - name: Symlink Sway-related dotfiles
   ansible.builtin.include_role:
-    name: dotfiles
+    name: util-dotfiles
 - name: Enable startup services
   ansible.builtin.systemd:
     name: "{{ item }}"

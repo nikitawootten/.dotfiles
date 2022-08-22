@@ -8,6 +8,7 @@
     - sway
     # - hyprland
     - zsh
+    - pywal
     - yubikey
     - update-script
   tasks:
@@ -18,3 +19,6 @@
         state: link
       with_items:
         - .config/sway/config.d/yukon
+    - name: Set timezone to America/New_York
+      community.general.timezone:
+        name: America/New_York
