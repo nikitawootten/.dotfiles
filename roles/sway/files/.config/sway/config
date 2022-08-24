@@ -131,5 +131,8 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+# exec --no-startup-id dbus-update-activation-environment --all
+
 include config.d/*
 include /etc/sway/config.d/*

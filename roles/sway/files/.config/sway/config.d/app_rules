@@ -8,3 +8,7 @@ for_window [app_id="firefox" title="^Firefox — Sharing Indicator$"] {
     inhibit_idle open
 }
 
+for_window [title="^minecraft-launcher$"] {
+    floating enable
+}
+

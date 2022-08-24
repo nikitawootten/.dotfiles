@@ -1,5 +1,5 @@
 ---
-- ansible.builtin.include_tasks: roles/yay/tasks/per_package.yaml
+- ansible.builtin.include_tasks: roles/util-yay/tasks/per_package.yaml
   with_items: "{{ yay_packages }}"
   loop_control:
     loop_var: yay_package

@@ -18,6 +18,8 @@
       - slurp
       - wf-recorder
       - xdg-desktop-portal-wlr
+      # media
+      - playerctl
     state: present
     update_cache: true
   become: true
@@ -28,6 +30,7 @@
     yay_packages:
       - swaylock-effects-git
       - swayr
+      - libinput-gestures
 - name: Symlink Sway-related dotfiles
   ansible.builtin.include_role:
     name: util-dotfiles
@@ -39,3 +42,12 @@
   with_items:
     - swayidle
     - swayrd
+    - libinput-gestures
+# required by libinput-gestures
+- name: Add user '{{ lookup('env', 'USER') }}' to input group
+  ansible.builtin.user:
+    name: "{{ lookup('env', 'USER') }}"
+    groups:
+      - input
+    append: true
+  become: true

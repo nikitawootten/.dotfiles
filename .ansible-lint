@@ -5,6 +5,7 @@ skip_list:
   - command-instead-of-module
   # I have some long commands
   - yaml[line-length]
+  - jinja[spacing]
   - risky-file-permissions
   - var-naming
   - role-name

@@ -1,0 +1,11 @@
+[Unit]
+Description=Actions gestures on your touchpad using libinput
+Documentation=https://github.com/bulletmark/libinput-gestures
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/libinput-gestures -c %h/.config/libinput-gestures/sway.conf
+
+[Install]
+WantedBy=sway-session.target
