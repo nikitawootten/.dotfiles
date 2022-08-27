@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - role: gnome-keyring
+  # - role: gnome-keyring
   - role: alacritty

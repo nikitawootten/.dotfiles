@@ -1,0 +1,4 @@
+include "$HOME/.cache/wal/colors-sway"
+
+output * bg $wallpaper fill
+client.focused $color0 $background $foreground $color7 $background

@@ -2,6 +2,36 @@
   ansible.builtin.package:
     name:
       - python-pywal
+      - python2
     state: present
     update_cache: true
   become: true
+- name: Install wpgtk
+  ansible.builtin.include_role:
+    name: util-yay
+  vars:
+    yay_packages:
+      - wpgtk-git
+- name: Symlink zsh configs (if applicable)
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/pywal/files/{{ item }}"
+    path: "~/{{ item }}"
+    state: link
+  with_items:
+    - .config/zshrc.d/pywal.zsh
+  when: "'zsh' in role_names"
+- name: Symlink Sway configs (if applicable)
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/pywal/files/{{ item }}"
+    path: "~/{{ item }}"
+    state: link
+  with_items:
+    - .config/sway/config.d/pywal
+    - .config/wal/templates/mako.conf
+  when: "'zsh' in role_names"
+- name: Symlink PyWal Mako template
+  ansible.builtin.file:
+    src: ~/.cache/wal/mako.conf
+    dest: ~/.config/mako/config
+    state: link
+    force: true

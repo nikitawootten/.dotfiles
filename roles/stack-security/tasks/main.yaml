@@ -1,0 +1,16 @@
+- name: Install security-related software
+  ansible.builtin.package:
+    name:
+      - nmap
+      - wireshark-qt
+      - macchanger
+    state: present
+    update_cache: true
+  become: true
+- name: Add user '{{ lookup('env', 'USER') }}' to Wireshark group
+  ansible.builtin.user:
+    name: "{{ lookup('env', 'USER') }}"
+    groups:
+      - wireshark
+    append: true
+  become: true

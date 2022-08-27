@@ -1,14 +1,14 @@
 window {
-    border: 2px solid #25493F;
+    border: 2px solid --wofi-color1;
     border-radius: 12px;
-    background-color: #83A397; 
+    background-color: --wofi-color0;
 }
 
 #input {
-    color: #1F2025;
-    border: 2px solid #25493F;
+    background-color: --wofi-color0;
+    color: --wofi-color15;
+    border: 2px solid --wofi-color1;
     border-radius: 12px;
-    background-color: #B3C0BC;
     font-size: 18px;
 }
 
@@ -20,7 +20,7 @@ window {
 #scroll {
     margin: 5px 0px;
     font-size: 16px;
-    color: #bd93f9;
+    color: --wofi-color2;
 }
 
 #scroll label {
@@ -28,10 +28,10 @@ window {
 }
 
 #entry {
-    color: #1F2025
+    color: --wofi-color1;
 }
 
 #entry:selected {
-    color: #B3C0BC;
-    background-color: #25493F;
+    /* color: --wofi-color1; */
+    background-color: --wofi-color2;
 }

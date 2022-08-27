@@ -11,6 +11,7 @@
     - pywal
     - yubikey
     - update-script
+    - stack-security
   tasks:
     - name: Symlink files
       ansible.builtin.file:
