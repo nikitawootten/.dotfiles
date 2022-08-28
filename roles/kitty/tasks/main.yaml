@@ -1,0 +1,23 @@
+- name: Install Kitty
+  ansible.builtin.package:
+    name: kitty
+    state: present
+    update_cache: true
+  become: true
+- name: Ensure ~/.local/bin exists
+  ansible.builtin.file:
+    path: ~/.local/bin
+    state: directory
+# did I mention I hate xdg-open?
+- name: Symlink Kitty to ~/.local/bin/xterm
+  ansible.builtin.file:
+    src: /usr/bin/kitty
+    path: ~/.local/bin/xterm
+    state: link
+- name: Symlink Kitty-related dotfiles
+  ansible.builtin.include_role:
+    name: util-dotfiles
+- name: Ensure ~/.config/kitty/kitty.d exists
+  ansible.builtin.file:
+    path: ~/.config/kitty/kitty.d
+    state: directory

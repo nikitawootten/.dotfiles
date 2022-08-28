@@ -6,6 +6,7 @@
     - ssh-client
     - git
     - sway
+    - kitty
     # - hyprland
     - zsh
     - pywal

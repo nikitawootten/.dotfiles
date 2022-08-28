@@ -7,7 +7,7 @@ set $down j
 set $up k
 set $right l
 
-set $term alacritty
+set $term kitty
 set $menu wofi --allow-images -modi --show drun
 
 ### Key bindings

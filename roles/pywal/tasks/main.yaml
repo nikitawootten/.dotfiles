@@ -35,3 +35,12 @@
     dest: ~/.config/mako/config
     state: link
     force: true
+  when: "'sway' in role_names"
+- name: Symlink Kitty configs (if applicable)
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/pywal/files/{{ item }}"
+    path: "~/{{ item }}"
+    state: link
+  with_items:
+    - .config/kitty/kitty.d/pywal.conf
+  when: "'kitty' in role_names"

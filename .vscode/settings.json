@@ -3,7 +3,6 @@
         "*.yaml": "ansible",
       },
       "cSpell.words": [
-        "alacritty",
         "bindsym",
         "swayr",
         "TOFIX"
