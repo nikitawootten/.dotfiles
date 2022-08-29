@@ -1,5 +1,5 @@
 ---
 dependencies:
-  - role: zsh
-  - role: git
-  - role: ssh-client
+  - role: base-zsh
+  - role: base-git
+  - role: base-ssh-client

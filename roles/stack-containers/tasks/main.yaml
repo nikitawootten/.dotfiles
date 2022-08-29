@@ -1,9 +1,13 @@
-- import_tasks: install_arch.yaml
-  when: ansible_distribution == "Arch Linux" or
-        ansible_distribution == "Archlinux"
-- import_tasks: install_debian.yaml
-  when: ansible_distribution == "Debian" or
-        ansible_distribution == "Ubuntu"
+- name: Install Docker (Docker)
+  ansible.builtin.package:
+    name:
+      - docker
+      - docker-compose
+      - kubectl
+      - helm
+    state: present
+    update_cache: true
+  become: true
 - name: Start Docker service
   ansible.builtin.service:
     name: docker

@@ -19,7 +19,7 @@
     state: link
   with_items:
     - .config/zshrc.d/pywal.zsh
-  when: "'zsh' in role_names"
+  when: "'base-zsh' in role_names"
 - name: Symlink Sway configs (if applicable)
   ansible.builtin.file:
     src: "{{ playbook_dir }}/roles/pywal/files/{{ item }}"
@@ -28,14 +28,14 @@
   with_items:
     - .config/sway/config.d/pywal
     - .config/wal/templates/mako.conf
-  when: "'zsh' in role_names"
+  when: "'base-zsh' in role_names"
 - name: Symlink PyWal Mako template
   ansible.builtin.file:
     src: ~/.cache/wal/mako.conf
     dest: ~/.config/mako/config
     state: link
     force: true
-  when: "'sway' in role_names"
+  when: "'desktop-sway' in role_names"
 - name: Symlink Kitty configs (if applicable)
   ansible.builtin.file:
     src: "{{ playbook_dir }}/roles/pywal/files/{{ item }}"
@@ -43,4 +43,4 @@
     state: link
   with_items:
     - .config/kitty/kitty.d/pywal.conf
-  when: "'kitty' in role_names"
+  when: "'application-kitty' in role_names"

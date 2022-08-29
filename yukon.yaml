@@ -2,17 +2,17 @@
 - name: Set up casper-magi
   hosts: localhost
   roles:
-    - docker
-    - ssh-client
-    - git
-    - sway
-    - kitty
+    - base-zsh
+    - base-ssh-client
+    - base-git
+    - application-kitty
     # - hyprland
-    - zsh
-    - pywal
     - yubikey
     - update-script
+    - stack-containers
     - stack-security
+    - desktop-sway
+    - pywal
   tasks:
     - name: Symlink files
       ansible.builtin.file:
