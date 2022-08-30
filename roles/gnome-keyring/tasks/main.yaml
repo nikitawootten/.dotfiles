@@ -6,9 +6,6 @@
     state: present
     update_cache: true
   become: true
-- name: Symlink gnome-keyring dotfiles
-  ansible.builtin.include_role:
-    name: util-dotfiles
 - name: Enable startup services
   ansible.builtin.systemd:
     name: "{{ item }}"

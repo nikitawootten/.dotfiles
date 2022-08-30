@@ -1,0 +1,25 @@
+- name: Install common Wayland utilities
+  ansible.builtin.package:
+    name:
+      # wayland utils
+      - wl-clipboard
+      - brightnessctl
+      - mako
+      # dmenu replacement
+      - wofi
+      # backwards compatibility with x
+      - xorg-xwayland
+      - xorg-xhost
+      # screen capture/shot utilities
+      - grim
+      - slurp
+      - wf-recorder
+      - xdg-desktop-portal-wlr
+      # media
+      - playerctl
+    state: present
+    update_cache: true
+  become: true
+- name: Symlink common Wayland-related dotfiles
+  ansible.builtin.include_role:
+    name: util-dotfiles

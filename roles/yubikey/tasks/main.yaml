@@ -13,7 +13,7 @@
   become: true
 - name: Enable pcscd
   ansible.builtin.systemd:
-    name: pcscd
+    name: pcscd.service
     enabled: true
     state: started
   become: true

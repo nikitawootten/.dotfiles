@@ -1,0 +1,4 @@
+---
+dependencies:
+  - role: gnome-keyring
+  - role: application-kitty

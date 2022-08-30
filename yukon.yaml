@@ -2,16 +2,16 @@
 - name: Set up casper-magi
   hosts: localhost
   roles:
-    - base-zsh
-    - base-ssh-client
     - base-git
-    - application-kitty
-    # - hyprland
-    - yubikey
+    - base-ssh-client
+    - base-zsh
     - update-script
+    - yubikey
+    - application-kitty
     - stack-containers
     - stack-security
     - desktop-sway
+    - desktop-hyprland
     - pywal
   tasks:
     - name: Symlink files

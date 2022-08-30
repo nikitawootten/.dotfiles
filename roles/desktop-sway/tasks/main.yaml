@@ -2,24 +2,7 @@
   ansible.builtin.package:
     name:
       - sway
-      # - swaylock
       - swayidle
-      # wayland utils
-      - wl-clipboard
-      - brightnessctl
-      - mako
-      # dmenu replacement
-      - wofi
-      # backwards compatibility with x
-      - xorg-xwayland
-      - xorg-xhost
-      # screen capture/shot utilities
-      - grim
-      - slurp
-      - wf-recorder
-      - xdg-desktop-portal-wlr
-      # media
-      - playerctl
     state: present
     update_cache: true
   become: true
