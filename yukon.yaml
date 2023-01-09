@@ -1,5 +1,5 @@
 ---
-- name: Set up casper-magi
+- name: Set up yukon
   hosts: localhost
   roles:
     - base-git
@@ -8,6 +8,7 @@
     - update-script
     - yubikey
     - application-kitty
+    - application-helix
     - stack-containers
     - stack-security
     - desktop-sway

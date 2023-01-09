@@ -7,7 +7,7 @@
     state: present
     update_cache: true
   become: true
-- name: Add user '{{ lookup('env', 'USER') }}' to Wireshark group
+- name: Add Wireshark group to user {{ lookup('env', 'USER') }}
   ansible.builtin.user:
     name: "{{ lookup('env', 'USER') }}"
     groups:

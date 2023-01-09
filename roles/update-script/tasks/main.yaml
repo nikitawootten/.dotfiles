@@ -4,7 +4,8 @@
     state: directory
 - name: Get playbook info
   ansible.builtin.set_fact:
-    playbookBaseName: "{{ (lookup('file', '/proc/self/cmdline') | regex_replace('\u0000',' ')).split() | select('match','^.*[.]ya?ml$') | list | first | basename }}"
+    # Get the name of the playbook that ran this role
+    playbook_base_name: "{{ (lookup('file', '/proc/self/cmdline') | regex_replace('\u0000',' ')).split() | select('match','^.*[.]ya?ml$') | list | first | basename }}"
 - name: Create update script
   ansible.builtin.template:
     src: dotfiles-update.j2

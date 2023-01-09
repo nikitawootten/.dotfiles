@@ -5,6 +5,6 @@ echo "Ensuring Ansible Galaxy dependencies are installed"
 
 (cd {{ playbook_dir }}; ansible-galaxy install -r requirements.yaml)
 
-echo "Running Play {{ playbookBaseName }}"
+echo "Running Play {{ playbook_base_name }}"
 
-(cd {{ playbook_dir }}; ansible-playbook -i hosts -K {{ playbookBaseName }} $@)
+(cd {{ playbook_dir }}; ansible-playbook -i hosts -K {{ playbook_base_name }} $@)

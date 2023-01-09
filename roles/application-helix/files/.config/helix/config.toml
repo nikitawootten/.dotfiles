@@ -1,0 +1,10 @@
+theme = "monokai_pro"
+
+[keys.normal]
+C-s = ":w" # Maps the Ctrl-s to the typable command :w which is an alias for :write (save file)
+
+[editor]
+cursorline = true
+
+[editor.indent-guides]
+render = true

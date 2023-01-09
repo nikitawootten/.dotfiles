@@ -1,0 +1,16 @@
+- name: Add Helix COPR repo (Fedora)
+  community.general.copr:
+    name: varlad/helix
+    state: enabled
+  become: true
+  when: ansible_distribution == "Fedora"
+- name: Install Helix
+  ansible.builtin.package:
+    name:
+      - helix
+    state: present
+    update_cache: true
+  become: true
+- name: Symlink Helix dotfiles
+  ansible.builtin.include_role:
+    name: util-dotfiles

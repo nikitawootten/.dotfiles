@@ -8,6 +8,7 @@
     - update-script
     - yubikey
     - stack-containers
+    - application-helix
   tasks:
     - name: Set timezone to America/New_York
       community.general.timezone:

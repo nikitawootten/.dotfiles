@@ -27,7 +27,7 @@
     - swayrd
     - libinput-gestures
 # required by libinput-gestures
-- name: Add user '{{ lookup('env', 'USER') }}' to input group
+- name: Add input group to user {{ lookup('env', 'USER') }}
   ansible.builtin.user:
     name: "{{ lookup('env', 'USER') }}"
     groups:

@@ -34,7 +34,8 @@ These roles should generally be present on any machine that I manage.
 
 These roles manage the installation and configuration of a specific application.
 
-- [`application-kitty`](./roles/application-kitty): A very simple role that ensures that Kitty (a nice terminal emulator) is installed and tricks applications attempting to open XTerm into opening Kitty instead.
+- [`application-kitty`](./roles/application-kitty): A very simple role that installs the [Kitty](https://sw.kovidgoyal.net/kitty/) terminal emulator and tricks applications attempting to open XTerm into opening Kitty instead.
+- [`application-helix`](./roles/application-helix/): Installs and configures the [Helix](https://helix-editor.com/) editor.
 
 ### Desktop Roles
 
