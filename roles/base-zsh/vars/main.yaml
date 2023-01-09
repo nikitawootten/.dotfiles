@@ -1,5 +1,5 @@
 packages:
-  "Arch Linux":
+  Archlinux:
     - zsh
     - zsh-completions
     - zsh-syntax-highlighting

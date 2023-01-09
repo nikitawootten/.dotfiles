@@ -1,5 +1,5 @@
 packages:
-  "Arch Linux":
+  Archlinux:
     - gnupg
     - pcsclite
     - ccid
@@ -13,7 +13,7 @@ packages:
     - yubikey-personalization-gui
     - yubikey-manager
 user_services:
-  "Arch Linux":
+  Archlinux:
     - yubikey-touch-detector
     # Stolen from /usr/share/doc/gnupg/examples/systemd-user/
     - dirmngr.socket

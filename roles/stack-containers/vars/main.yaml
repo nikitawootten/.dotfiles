@@ -1,5 +1,5 @@
 packages:
-  "Arch Linux":
+  Archlinux:
     - docker
     - docker-compose
     - kubectl
