@@ -1,0 +1,63 @@
+# PAM setup specific to Arch Linux
+# See: https://wiki.archlinux.org/title/GNOME/Keyring#PAM_step
+- name: Install Gnome Keyring
+  ansible.builtin.package:
+    name:
+      - gnome-keyring
+      - seahorse
+    state: present
+    update_cache: true
+  become: true
+- name: Enable startup services
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: true
+    scope: user
+  with_items:
+    - gnome-keyring-daemon
+- name: Add auth pam_gnome_keyring rule to login PAM after auth system-local-login
+  community.general.pamd:
+    name: login
+    type: auth
+    control: include
+    module_path: system-local-login
+    new_type: auth
+    new_control: optional
+    new_module_path: pam_gnome_keyring.so
+    state: after
+  become: true
+- name: Add session pam_gnome_keyring to login PAM after password system-local-login
+  community.general.pamd:
+    name: login
+    type: password
+    control: include
+    module_path: system-local-login
+    new_type: session
+    new_control: optional
+    new_module_path: pam_gnome_keyring.so
+    module_arguments: auto_start
+    state: after
+  become: true
+- name: Add session pam_gnome_keyring to login PAM after password system-local-login
+  community.general.pamd:
+    name: login
+    type: password
+    control: include
+    module_path: system-local-login
+    new_type: session
+    new_control: optional
+    new_module_path: pam_gnome_keyring.so
+    module_arguments: auto_start
+    state: after
+  become: true
+- name: Add password pam_gnome_keyring to passwd PAM after password pam_unix
+  community.general.pamd:
+    name: passwd
+    type: password
+    control: required
+    module_path: pam_unix.so
+    new_type: password
+    new_control: optional
+    new_module_path: pam_gnome_keyring.so
+    state: after
+  become: true

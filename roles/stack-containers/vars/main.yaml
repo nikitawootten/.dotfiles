@@ -1,0 +1,13 @@
+packages:
+  "Arch Linux":
+    - docker
+    - docker-compose
+    - kubectl
+    - helm
+  # Kubectl not installed via official package manager
+  Fedora:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-compose-plugin
+    - helm

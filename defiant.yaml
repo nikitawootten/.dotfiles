@@ -1,0 +1,14 @@
+---
+- name: Set up defiant
+  hosts: localhost
+  roles:
+    - base-git
+    - base-ssh-client
+    - base-zsh
+    - update-script
+    - yubikey
+    - stack-containers
+  tasks:
+    - name: Set timezone to America/New_York
+      community.general.timezone:
+        name: America/New_York

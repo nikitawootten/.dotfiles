@@ -1,0 +1,13 @@
+packages:
+  "Arch Linux":
+    - zsh
+    - zsh-completions
+    - zsh-syntax-highlighting
+    - jq
+    - ranger
+  # zsh-completions only required in Arch
+  Fedora:
+    - zsh
+    - zsh-syntax-highlighting
+    - jq
+    - ranger

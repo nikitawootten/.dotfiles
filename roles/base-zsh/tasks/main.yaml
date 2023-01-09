@@ -1,12 +1,6 @@
 - name: Install zsh and zsh plugins
   ansible.builtin.package:
-    name:
-      - zsh
-      - zsh-completions
-      - zsh-syntax-highlighting
-      # commonly used shell utils
-      - jq
-      - ranger
+    name: "{{ packages[ansible_distribution] }}"
     state: present
     update_cache: true
   become: true

@@ -1,0 +1,29 @@
+packages:
+  "Arch Linux":
+    - gnupg
+    - pcsclite
+    - ccid
+    - yubikey-personalization
+    - yubikey-manager
+    - yubikey-touch-detector
+  Fedora:
+    - gnupg2
+    - pcsc-lite
+    - pcsc-lite-ccid
+    - yubikey-personalization-gui
+    - yubikey-manager
+user_services:
+  "Arch Linux":
+    - yubikey-touch-detector
+    # Stolen from /usr/share/doc/gnupg/examples/systemd-user/
+    - dirmngr.socket
+    - gpg-agent-browser.socket
+    - gpg-agent-extra.socket
+    - gpg-agent-ssh.socket
+    - gpg-agent.socket
+  Fedora:
+    - dirmngr.socket
+    - gpg-agent-browser.socket
+    - gpg-agent-extra.socket
+    - gpg-agent-ssh.socket
+    - gpg-agent.socket

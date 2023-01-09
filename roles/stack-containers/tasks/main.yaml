@@ -1,10 +1,13 @@
-- name: Install Docker (Docker)
+- name: Set up Docker repo (Fedora)
+  ansible.builtin.get_url:
+    url: https://download.docker.com/linux/fedora/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+    mode: 644
+  become: true
+  when: ansible_distribution == "Fedora"
+- name: Install Docker and K8s related packages
   ansible.builtin.package:
-    name:
-      - docker
-      - docker-compose
-      - kubectl
-      - helm
+    name: "{{ packages[ansible_distribution] }}"
     state: present
     update_cache: true
   become: true
@@ -14,7 +17,7 @@
     state: started
     enabled: true
   become: true
-- name: Add user '{{ lookup('env', 'USER') }}' to Docker group
+- name: Add Docker group to user {{ lookup('env', 'USER') }}
   ansible.builtin.user:
     name: "{{ lookup('env', 'USER') }}"
     groups:

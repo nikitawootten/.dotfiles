@@ -1,13 +1,6 @@
 - name: Install Yubikey and PGP-related packages
   ansible.builtin.package:
-    name:
-      - gnupg
-      - pcsclite
-      - ccid
-      # - hopenpgp-tools
-      - yubikey-personalization
-      - yubikey-manager
-      - yubikey-touch-detector
+    name: "{{ packages[ansible_distribution] }}"
     state: present
     update_cache: true
   become: true
@@ -30,14 +23,7 @@
     enabled: true
     state: started
     scope: user
-  with_items:
-    - yubikey-touch-detector
-    # Stolen from /usr/share/doc/gnupg/examples/systemd-user/
-    - dirmngr.socket
-    - gpg-agent-browser.socket
-    - gpg-agent-extra.socket
-    - gpg-agent-ssh.socket
-    - gpg-agent.socket
+  with_items: "{{ user_services[ansible_distribution] }}"
 - name: List the keys before importing
   ansible.builtin.command: gpg -K
   changed_when: false
