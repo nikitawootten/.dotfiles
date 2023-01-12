@@ -1,0 +1,10 @@
+- name: Install Tmux
+  ansible.builtin.package:
+    name:
+      - helix
+    state: present
+    update_cache: true
+  become: true
+- name: Symlink Tmux dotfiles
+  ansible.builtin.include_role:
+    name: util-dotfiles

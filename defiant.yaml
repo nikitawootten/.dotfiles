@@ -9,6 +9,7 @@
     - yubikey
     - stack-containers
     - application-helix
+    - application-tmux
   tasks:
     - name: Set timezone to America/New_York
       community.general.timezone:

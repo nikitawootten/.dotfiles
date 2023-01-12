@@ -9,6 +9,7 @@
     - yubikey
     - application-kitty
     - application-helix
+    - application-tmux
     - stack-containers
     - stack-security
     - desktop-sway
