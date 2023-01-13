@@ -16,7 +16,7 @@
     state: directory
 - name: Symlink configs
   ansible.builtin.include_role:
-    name: util-dotfiles
+    name: nikitawootten.dotfiles
 - name: Enable auth services
   ansible.builtin.systemd:
     name: "{{ item }}"

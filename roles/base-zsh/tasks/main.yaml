@@ -6,7 +6,7 @@
   become: true
 - name: Symlink zsh dotfiles
   ansible.builtin.include_role:
-    name: util-dotfiles
+    name: nikitawootten.dotfiles
 - name: Change user shell to zsh
   vars:
     the_user: "{{ ansible_user_id }}"

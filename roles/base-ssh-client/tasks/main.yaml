@@ -8,12 +8,12 @@
   ansible.builtin.file:
     path: ~/.ssh
     state: directory
-    mode: '0700'
+    mode: "0700"
 - name: Symlink ssh-client dependencies
   ansible.builtin.include_role:
-    name: util-dotfiles
+    name: nikitawootten.dotfiles
 - name: Assert config permissions
   ansible.builtin.file:
     path: ~/.ssh/config.d
     state: directory
-    mode: '0700'
+    mode: "0700"

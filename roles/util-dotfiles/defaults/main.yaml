@@ -1,4 +1,0 @@
----
-# see dotfiles/meta/argument_specs.yaml for a description
-dotfiles_src: files
-dotfiles_dest: "~"

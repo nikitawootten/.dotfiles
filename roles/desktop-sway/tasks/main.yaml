@@ -16,7 +16,7 @@
       - libinput-gestures
 - name: Symlink Sway-related dotfiles
   ansible.builtin.include_role:
-    name: util-dotfiles
+    name: nikitawootten.dotfiles
 - name: Enable startup services
   ansible.builtin.systemd:
     name: "{{ item }}"

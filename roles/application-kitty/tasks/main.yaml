@@ -16,7 +16,7 @@
     state: link
 - name: Symlink Kitty-related dotfiles
   ansible.builtin.include_role:
-    name: util-dotfiles
+    name: nikitawootten.dotfiles
 - name: Ensure ~/.config/kitty/kitty.d exists
   ansible.builtin.file:
     path: ~/.config/kitty/kitty.d

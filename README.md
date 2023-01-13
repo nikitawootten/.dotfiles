@@ -55,15 +55,13 @@ These roles install sets of applications relating to one topic, such as tools fo
 
 These roles can be invoked more then once and provide utility functions for the other roles in this playbook.
 
-- [`util-dotfiles`](./roles/util-dotfiles): A **utility** role that scratches that itch left by [GNU Stow](https://www.gnu.org/software/stow/).
-  This role is used by some of the other roles in this list to symlink configuration data to the correct location.
+- [`update-script`](./roles/update-script): Creates a script `dotfiles-update`, which can be used to rerun the Ansible play.
 - [`util-yay`](./roles/util-yay): A **utility** role that _possibly_ installs an AUR package via `yay`. `yay` must be installed separately at the moment.
 
 ### Other Roles
 
 - [`gnome-keyring`](./roles/gnome-keyring): Installs the gnome keyring along with some PAM configuration.
 - [`pywal`](./roles/pywal): [PyWal](https://github.com/dylanaraps/pywal) generates color schemes on the fly off of a wallpaper. This role installs and configures PyWal and configures some applications to use the generated color schemes.
-- [`update-script`](./roles/update-script): Creates a script `dotfiles-update`, which can be used to rerun the Ansible play.
 - [`yubikey`](./roles/yubikey): Installs GPG and Yubikey related utilities, and configures SSH and Git to use Yubikey for authorization and commit signing. Do not use verbatim unless you have ambitions of stealing my identity.
 
 ## Running
