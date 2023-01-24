@@ -5,7 +5,8 @@ PartOf=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/swww init --no-daemon
+# ExecStart=/usr/bin/swww init --no-daemon
+ExecStart=%h/.config/swww/launch.sh
 
 [Install]
 WantedBy=graphical-session.target
