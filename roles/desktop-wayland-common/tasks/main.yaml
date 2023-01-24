@@ -17,9 +17,20 @@
       - xdg-desktop-portal-wlr
       # media
       - playerctl
+      # fonts
+      - otf-font-awesome
+      - ttf-roboto
     state: present
     update_cache: true
   become: true
 - name: Symlink common Wayland-related dotfiles
   ansible.builtin.include_role:
     name: nikitawootten.dotfiles
+- name: Enable startup services
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: true
+    scope: user
+  with_items:
+    - swayidle
+    - swww

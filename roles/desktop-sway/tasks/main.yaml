@@ -23,7 +23,6 @@
     enabled: true
     scope: user
   with_items:
-    - swayidle
     - swayrd
     - libinput-gestures
 # required by libinput-gestures

@@ -2,7 +2,6 @@
   ansible.builtin.package:
     name:
       - python-pywal
-      - python2
     state: present
     update_cache: true
   become: true

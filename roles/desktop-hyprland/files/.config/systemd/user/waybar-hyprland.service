@@ -1,0 +1,11 @@
+[Unit]
+Description=Waybar configuration for Hyprland
+Documentation=https://github.com/Alexays/Waybar
+PartOf=hyprland-session.target
+
+[Service]
+Type=simple
+ExecStart=waybar --config %h/.config/waybar/config_hyprland
+
+[Install]
+WantedBy=hyprland-session.target

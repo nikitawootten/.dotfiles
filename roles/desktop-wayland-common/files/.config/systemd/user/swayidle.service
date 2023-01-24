@@ -8,4 +8,4 @@ Type=simple
 ExecStart=%h/.local/bin/lock idlesetup
 
 [Install]
-WantedBy=sway-session.target
+WantedBy=graphical-session.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=A Solution to your Wayland Wallpaper Woes
+Documentation=https://github.com/Horus645/swww
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/swww init --no-daemon
+
+[Install]
+WantedBy=graphical-session.target

@@ -3,7 +3,14 @@
     name: util-yay
   vars:
     yay_packages:
-      - hyprland-bin
+      - hyprland
 - name: Symlink Hyprland-related dotfiles
   ansible.builtin.include_role:
     name: nikitawootten.dotfiles
+- name: Enable startup services
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: true
+    scope: user
+  with_items:
+    - waybar-hyprland
