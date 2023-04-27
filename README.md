@@ -1,6 +1,14 @@
 # dotfiles
 
-My .files, feel free to poke around!
+My old .files, feel free to poke around!
+
+## Notice
+
+I have archived this repository as my personal philosophy towards configuration management has shifted away from an "Ansible first" mentality.
+I love Ansible and will absolutely continue to use it where appropriate, but I believe that [Nix](https://nixos.org/) (and specifically [Home-Manager](https://github.com/nix-community/home-manager)) solves the problem of personal configuration management more elegantly.
+My current dotfiles can be found in [`nikitawootten/infra`](https://github.com/nikitawootten/infra).
+
+I still plan to maintain the [`ansible-role-dotfiles`](https://github.com/nikitawootten/ansible-role-dotfiles) project, which this repository depends on.
 
 ## Structure
 
